@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Josias Odermatt – Portfolio</title>
+  <meta name="description" content="Portfolio von Josias Odermatt: Projekte, Skills, Kontakt und aktuelle Arbeiten." />
+
+  <!-- Open Graph (Sharing) -->
+  <meta property="og:title" content="Josias Odermatt – Portfolio" />
+  <meta property="og:description" content="Projekte, Skills, Kontakt und aktuelle Arbeiten." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header>
+    <div class="container">
+      <h1>Josias Odermatt</h1>
+      <p>Student · Web Engineering · AI-Interessen</p>
+      <nav aria-label="Hauptnavigation">
+        <ul class="nav">
+          <li><a href="#about">Über mich</a></li>
+          <li><a href="#projects">Projekte</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">Über mich</h2>
+      <p>
+        Hallo! Ich bin Josias, Student an der BFH mit Fokus auf Webentwicklung, Daten & AI.
+        Auf dieser Seite findest du ausgewählte Arbeiten und Wege, mich zu erreichen.
+      </p>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projekte</h2>
+
+      <!-- Statisches Beispiel -->
+      <div class="grid">
+        <article class="card">
+          <h3>Projekt 1</h3>
+          <p>Kurzbeschreibung deines Projekts.</p>
+        </article>
+        <article class="card">
+          <h3>Projekt 2</h3>
+          <p>Noch ein Beispiel – was war deine Rolle, Tech-Stack?</p>
+        </article>
+      </div>
+
+      <!-- Dynamisches Widget: GitHub API -->
+      <h3>Meine letzten GitHub-Repos</h3>
+      <div id="gh-repos" class="grid" data-user="DEIN_GITHUB_USERNAME">
+        <!-- JS rendert hier Karten -->
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Kontakt</h2>
+      <p>
+        Mail: <a href="mailto:dein.name@email.com">dein.name@email.com</a><br />
+        LinkedIn · GitHub · weitere Links
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Josias Odermatt</div>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
