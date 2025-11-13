@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Kontakt</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Mein Portfolio</h1>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="ueber-mich.html">Über mich</a></li>
+                    <li><a href="werdegang.html">Werdegang</a></li>
+                    <li><a href="hobbys.html">Hobbys</a></li>
+                    <li><a href="kontakt.html" class="active">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>Kontakt</h2>
+                <p>Lass uns in Verbindung treten</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Schreib mir!</h3>
+                        <p>Hast du Fragen, möchtest du zusammenarbeiten oder einfach nur Hallo sagen? Ich freue mich auf deine Nachricht!</p>
+
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:deine.email@example.com">deine.email@example.com</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <span class="contact-icon">📱</span>
+                                <div>
+                                    <h4>Telefon</h4>
+                                    <a href="tel:+491234567890">+49 123 456 7890</a>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <div>
+                                    <h4>Standort</h4>
+                                    <p>Stadt, Land</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-media">
+                            <h4>Folge mir</h4>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon" title="LinkedIn">
+                                    <span>💼</span>
+                                    LinkedIn
+                                </a>
+                                <a href="#" class="social-icon" title="GitHub">
+                                    <span>🔗</span>
+                                    GitHub
+                                </a>
+                                <a href="#" class="social-icon" title="Twitter">
+                                    <span>🐦</span>
+                                    Twitter
+                                </a>
+                                <a href="#" class="social-icon" title="Instagram">
+                                    <span>📷</span>
+                                    Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="deine@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Betreff</label>
+                                <input type="text" id="subject" name="subject" placeholder="Worum geht es?">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Nachricht *</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Schreibe deine Nachricht..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                Nachricht senden
+                            </button>
+
+                            <p class="form-note">* Pflichtfelder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="availability-section">
+            <div class="container">
+                <div class="availability-box">
+                    <div class="availability-icon">✅</div>
+                    <h3>Verfügbarkeit</h3>
+                    <p>Ich bin aktuell offen für neue Projekte und Zusammenarbeiten. Kontaktiere mich gerne!</p>
+                    <div class="response-time">
+                        <span class="time-icon">⏱️</span>
+                        <p>Antwortzeit: Normalerweise innerhalb von 24-48 Stunden</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Mein Portfolio. Alle Rechte vorbehalten.</p>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">💼</a>
+                    <a href="#" title="GitHub">🔗</a>
+                    <a href="#" title="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Einfache Formular-Validierung und Handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.');
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>
