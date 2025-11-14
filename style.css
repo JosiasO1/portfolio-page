@@ -108,8 +108,8 @@ nav ul li a:hover {
 }
 
 nav ul li a.active {
-    color: #4a90e2;
-    background-color: #e8f4ff;
+    color: #4169E1;
+    background-color: #e8f0ff;
     font-weight: 600;
 }
 
@@ -186,7 +186,7 @@ nav ul li a.active {
    =========================== */
 
 .hero {
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
     padding: 100px 0;
     text-align: center;
 }
@@ -218,7 +218,7 @@ nav ul li a.active {
    =========================== */
 
 .page-header {
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
     padding: 80px 0 60px;
     text-align: center;
 }
@@ -312,13 +312,13 @@ section {
 }
 
 .link-arrow {
-    color: #4a90e2;
+    color: #4169E1;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .link-arrow:hover {
-    color: #357abd;
+    color: #2952cc;
 }
 
 /* ===========================
@@ -336,10 +336,18 @@ section {
     text-align: center;
 }
 
+.profile-image img {
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
 .image-placeholder {
     width: 250px;
     height: 250px;
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -431,7 +439,7 @@ section {
 }
 
 .value-item:hover {
-    background-color: #e8f4ff;
+    background-color: #e8f0ff;
     transform: translateY(-3px);
 }
 
@@ -467,7 +475,7 @@ section {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(to bottom, #4a90e2, #e8f4ff);
+    background: linear-gradient(to bottom, #4169E1, #e8f0ff);
 }
 
 .timeline-item {
@@ -481,10 +489,10 @@ section {
     top: 5px;
     width: 16px;
     height: 16px;
-    background-color: #4a90e2;
+    background-color: #4169E1;
     border-radius: 50%;
     border: 4px solid #ffffff;
-    box-shadow: 0 0 0 3px #e8f4ff;
+    box-shadow: 0 0 0 3px #e8f0ff;
 }
 
 .timeline-content {
@@ -502,8 +510,8 @@ section {
 
 .timeline-date {
     display: inline-block;
-    background-color: #e8f4ff;
-    color: #4a90e2;
+    background-color: #e8f0ff;
+    color: #4169E1;
     padding: 0.3rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -517,7 +525,7 @@ section {
 }
 
 .timeline-content h4 {
-    color: #4a90e2;
+    color: #4169E1;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
@@ -606,7 +614,7 @@ section {
 }
 
 .achievement-item:hover {
-    background-color: #e8f4ff;
+    background-color: #e8f0ff;
     transform: translateX(5px);
 }
 
@@ -647,7 +655,7 @@ section {
 }
 
 .project-image {
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
     height: 200px;
     display: flex;
     align-items: center;
@@ -668,8 +676,8 @@ section {
 
 .project-tag {
     display: inline-block;
-    background-color: #e8f4ff;
-    color: #4a90e2;
+    background-color: #e8f0ff;
+    color: #4169E1;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -798,7 +806,7 @@ section {
    =========================== */
 
 .quote-section {
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
 }
 
 .quote-box {
@@ -817,7 +825,7 @@ section {
 }
 
 .quote-author {
-    color: #4a90e2;
+    color: #4169E1;
     font-weight: 600;
 }
 
@@ -846,7 +854,7 @@ section {
 
 .travel-image {
     position: relative;
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
     height: 220px;
     display: flex;
     align-items: center;
@@ -963,7 +971,7 @@ section {
    =========================== */
 
 .travel-philosophy {
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
 }
 
 .philosophy-box {
@@ -1023,7 +1031,7 @@ section {
 }
 
 .contact-item a {
-    color: #4a90e2;
+    color: #4169E1;
 }
 
 .contact-item a:hover {
@@ -1056,7 +1064,7 @@ section {
 }
 
 .social-icon:hover {
-    background-color: #e8f4ff;
+    background-color: #e8f0ff;
     transform: translateX(5px);
 }
 
@@ -1105,8 +1113,8 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    border-color: #4169E1;
+    box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.1);
 }
 
 .form-group textarea {
@@ -1156,7 +1164,7 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background-color: #f0f8ff;
+    background-color: #f0f6ff;
     padding: 1rem;
     border-radius: 8px;
 }
@@ -1176,7 +1184,7 @@ section {
    =========================== */
 
 .cta-section {
-    background: linear-gradient(135deg, #e8f4ff 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #e8f0ff 0%, #f0f6ff 100%);
     text-align: center;
 }
 
