@@ -3,88 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Startseite</title>
+    <title>Josias Odermatt - Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
+<body class="futuristic-home">
+    <!-- Animated Background -->
+    <div class="space-background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="stars"></div>
+    </div>
+
+    <!-- Glass Navigation -->
+    <header class="glass-header">
         <div class="container">
-            <div class="logo">
-                <h1>Mein Portfolio</h1>
+            <div class="logo-futuristic">
+                <span class="logo-text">JO</span>
             </div>
-            <nav>
+            <nav class="nav-futuristic">
                 <input type="checkbox" id="menu-toggle">
                 <label for="menu-toggle" class="hamburger">
                     <span></span>
                     <span></span>
                     <span></span>
                 </label>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Startseite</a></li>
+                <ul class="nav-menu-glass">
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="ueber-mich.html">Über mich</a></li>
                     <li><a href="werdegang.html">Werdegang</a></li>
-                    <li><a href="hobbys.html">Hobbys</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
+    <main class="futuristic-main">
+        <!-- Hero Section -->
+        <section class="hero-futuristic">
             <div class="container">
-                <div class="hero-content">
-                    <h2>Josias Odermatt</h2>
-                    <p>BSc in Digital Business & AI</p>
-                    <div class="cta-buttons">
-                        <a href="ueber-mich.html" class="btn btn-primary">Über mich</a>
-                        <a href="kontakt.html" class="btn btn-secondary">Kontakt aufnehmen</a>
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <div class="badge-pill">
+                            <span class="badge-dot"></span>
+                            Verfügbar für Projekte
+                        </div>
+                        <h1 class="hero-title">
+                            Josias Odermatt
+                        </h1>
+                        <p class="hero-subtitle">
+                            BSc in Digital Business & AI
+                        </p>
+                        <p class="hero-description">
+                            Ich bin leidenschaftlich daran interessiert, kreative und innovative Lösungen zu entwickeln. Auf dieser Webseite findest du einen Überblick über meine Arbeit, meine Interessen und meinen beruflichen Werdegang.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="ueber-mich.html" class="btn-futuristic btn-primary-glow">
+                                <span>Über mich</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            <a href="kontakt.html" class="btn-futuristic btn-glass">
+                                <span>Kontakt aufnehmen</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="portrait-orb">
+                            <div class="orb-ring orb-ring-1"></div>
+                            <div class="orb-ring orb-ring-2"></div>
+                            <div class="orb-ring orb-ring-3"></div>
+                            <div class="portrait-silhouette">
+                                <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+                                    <circle cx="100" cy="70" r="35" fill="url(#gradient1)" opacity="0.8"/>
+                                    <ellipse cx="100" cy="140" rx="50" ry="60" fill="url(#gradient1)" opacity="0.8"/>
+                                    <defs>
+                                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="intro">
+        <!-- Info Cards Section -->
+        <section class="cards-futuristic">
             <div class="container">
-                <h3>Wer bin ich?</h3>
-                <p>Ich bin leidenschaftlich daran interessiert, kreative und innovative Lösungen zu entwickeln. Auf dieser Webseite findest du einen Überblick über meine Arbeit, meine Interessen und meinen beruflichen Werdegang.</p>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">👤</div>
-                        <h4>Über mich</h4>
+                <div class="cards-grid">
+                    <!-- Card 1: Über mich -->
+                    <a href="ueber-mich.html" class="glass-card">
+                        <div class="card-glow"></div>
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="12" cy="7" r="4" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Über mich</h3>
                         <p>Lerne mich und meine Geschichte kennen</p>
-                        <a href="ueber-mich.html" class="link-arrow">Mehr erfahren →</a>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h4>Werdegang</h4>
+                        <div class="card-arrow">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Card 2: Werdegang -->
+                    <a href="werdegang.html" class="glass-card">
+                        <div class="card-glow"></div>
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Werdegang</h3>
                         <p>Mein beruflicher und akademischer Weg</p>
-                        <a href="werdegang.html" class="link-arrow">Mehr erfahren →</a>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">✨</div>
-                        <h4>Hobbys</h4>
-                        <p>Was mich in meiner Freizeit begeistert</p>
-                        <a href="hobbys.html" class="link-arrow">Mehr erfahren →</a>
-                    </div>
+                        <div class="card-arrow">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <!-- Card 3: Kontakt -->
+                    <a href="kontakt.html" class="glass-card">
+                        <div class="card-glow"></div>
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="2"/>
+                                    <polyline points="22,6 12,13 2,6" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Kontakt</h3>
+                        <p>Lass uns in Verbindung treten</p>
+                        <div class="card-arrow">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <!-- Futuristic Footer -->
+    <footer class="footer-futuristic">
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Mein Portfolio. Alle Rechte vorbehalten.</p>
-                <div class="social-links">
-                    <a href="https://github.com/JosiasO1" title="GitHub" target="_blank">🔗</a>
-                    <a href="https://www.instagram.com/josias.odermatt" title="Instagram" target="_blank">📷</a>
+            <div class="footer-content-glass">
+                <p>&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
+                <div class="social-links-futuristic">
+                    <a href="https://github.com/JosiasO1" title="GitHub" target="_blank" class="social-orb">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/josias.odermatt" title="Instagram" target="_blank" class="social-orb">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="2"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Card Variant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Alternative Card-Grid Variante */
+        .skills-card-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04),
+                        0 1px 4px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4169E1, #667eea);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(65, 105, 225, 0.12),
+                        0 6px 12px rgba(65, 105, 225, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .skill-card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4169E1 0%, #667eea 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px rgba(65, 105, 225, 0.2);
+        }
+
+        .skill-card h4 {
+            font-size: 1.125rem;
+            color: #1e293b;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .skill-card-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #334155;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .skill-card-badge:hover {
+            background: #f0f6ff;
+            border-color: #4169E1;
+            color: #4169E1;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(65, 105, 225, 0.1);
+        }
+
+        .skill-card-badge-icon {
+            font-size: 1rem;
+            filter: grayscale(0.3);
+            transition: filter 0.2s ease;
+        }
+
+        .skill-card-badge:hover .skill-card-badge-icon {
+            filter: grayscale(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Mein Portfolio</h1>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="ueber-mich.html" class="active">Über mich</a></li>
+                    <li><a href="werdegang.html">Werdegang</a></li>
+                    <li><a href="hobbys.html">Hobbys</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>Meine Fähigkeiten</h2>
+                <p>Card-Grid Variante</p>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <div class="skills-card-container">
+                    <!-- Technische Skills Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-card-icon">💻</div>
+                            <h4>Technische Skills</h4>
+                        </div>
+                        <div class="skill-card-badges">
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🌐</span>
+                                <span>HTML & CSS</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">⚡</span>
+                                <span>JavaScript</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">⚛️</span>
+                                <span>React</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🐍</span>
+                                <span>Python</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🗄️</span>
+                                <span>SQL</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">📊</span>
+                                <span>R</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🔀</span>
+                                <span>Git</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🔌</span>
+                                <span>REST APIs</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Design & Tools Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-card-icon">🎨</div>
+                            <h4>Design & Tools</h4>
+                        </div>
+                        <div class="skill-card-badges">
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🎨</span>
+                                <span>Figma</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">✨</span>
+                                <span>UI/UX Design</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🖼️</span>
+                                <span>Prototyping</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">📱</span>
+                                <span>Responsive Design</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">📋</span>
+                                <span>BPMN</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Kompetenzen Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-card-icon">⭐</div>
+                            <h4>Kompetenzen</h4>
+                        </div>
+                        <div class="skill-card-badges">
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🧠</span>
+                                <span>Analytisches Denken</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🔧</span>
+                                <span>Problemlösung</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🤝</span>
+                                <span>Teamarbeit</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">🚀</span>
+                                <span>Selbstständigkeit</span>
+                            </span>
+                            <span class="skill-card-badge">
+                                <span class="skill-card-badge-icon">📚</span>
+                                <span>Lernbereitschaft</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Mein Portfolio. Alle Rechte vorbehalten.</p>
+                <div class="social-links">
+                    <a href="https://github.com/JosiasO1" title="GitHub" target="_blank">🔗</a>
+                    <a href="https://www.instagram.com/josias.odermatt" title="Instagram" target="_blank">📷</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
