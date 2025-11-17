@@ -113,13 +113,13 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1.125rem;
-    padding-bottom: 1.125rem;
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
 }
 
 .logo h1 {
-    font-size: 1.375rem;
-    font-weight: 600;
+    font-size: 1.65rem;
+    font-weight: 700;
     color: var(--color-black);
     letter-spacing: -0.02em;
 }
@@ -127,15 +127,15 @@ header .container {
 nav ul {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: center;
 }
 
 nav ul li a {
     color: var(--color-text-primary);
-    font-weight: 400;
-    font-size: 0.875rem;
-    padding: 0.5rem 0;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
     transition: opacity 0.3s ease;
 }
 
@@ -145,7 +145,7 @@ nav ul li a:hover {
 
 nav ul li a.active {
     color: var(--color-black);
-    font-weight: 500;
+    font-weight: 700;
 }
 
 /* Hamburger Menu */
@@ -177,7 +177,11 @@ nav ul li a.active {
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 1.125rem 0;
+}
+
+.glass-header .container {
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
 }
 
 .logo-futuristic {
@@ -186,7 +190,7 @@ nav ul li a.active {
 }
 
 .logo-text {
-    font-size: 1.375rem;
+    font-size: 1.65rem;
     font-weight: 700;
     color: var(--color-black);
     letter-spacing: -0.02em;
@@ -200,15 +204,15 @@ nav ul li a.active {
 .nav-menu-glass {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: center;
 }
 
 .nav-menu-glass li a {
     color: var(--color-text-primary);
-    font-weight: 400;
-    font-size: 0.875rem;
-    padding: 0.5rem 0;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
     transition: opacity 0.3s ease;
 }
 
@@ -218,15 +222,15 @@ nav ul li a.active {
 
 .nav-menu-glass li a.active {
     color: var(--color-black);
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .nav-menu-glass li a.nav-cta {
     background: var(--color-black);
     color: var(--color-bg-white);
-    padding: 0.5rem 1.25rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 12px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .nav-menu-glass li a.nav-cta:hover {
@@ -671,7 +675,7 @@ section {
 
 .timeline-minimal {
     position: relative;
-    padding: 5rem 0;
+    padding: 8rem 0;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -716,27 +720,34 @@ section {
     align-items: center;
     position: relative;
     cursor: pointer;
-    padding-top: 3rem;
+}
+
+/* Alternating layout: odd items above, even items below */
+.timeline-station:nth-child(odd) {
+    padding-bottom: 8rem;
+}
+
+.timeline-station:nth-child(even) {
+    padding-top: 8rem;
 }
 
 .station-marker {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: var(--color-black);
     border-radius: 50%;
-    border: 2px solid var(--color-bg-white);
+    border: 3px solid var(--color-bg-white);
     box-shadow: 0 0 0 2px var(--color-border);
-    margin-bottom: 1.5rem;
     transition: all 0.3s ease;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 3;
 }
 
 .timeline-station:hover .station-marker {
-    transform: translateX(-50%) scale(1.3);
+    transform: translate(-50%, -50%) scale(1.3);
     box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -748,7 +759,18 @@ section {
 .station-content {
     text-align: center;
     max-width: 180px;
-    margin-top: 1.5rem;
+    position: relative;
+}
+
+/* Content above the line for odd items */
+.timeline-station:nth-child(odd) .station-content {
+    order: -1;
+    padding-bottom: 2rem;
+}
+
+/* Content below the line for even items */
+.timeline-station:nth-child(even) .station-content {
+    padding-top: 2rem;
 }
 
 .station-period {
@@ -767,7 +789,6 @@ section {
 
 .station-tooltip {
     position: absolute;
-    bottom: calc(100% + 1rem);
     left: 50%;
     transform: translateX(-50%) translateY(10px);
     background: var(--color-bg-white);
@@ -783,13 +804,24 @@ section {
     transition: all 0.3s ease;
 }
 
+/* Tooltip above for odd items */
+.timeline-station:nth-child(odd) .station-tooltip {
+    bottom: calc(100% + 1rem);
+}
+
+/* Tooltip below for even items */
+.timeline-station:nth-child(even) .station-tooltip {
+    top: calc(100% + 1rem);
+}
+
 .timeline-station:hover .station-tooltip {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
-.station-tooltip::after {
+/* Arrow pointing down for odd items */
+.timeline-station:nth-child(odd) .station-tooltip::after {
     content: '';
     position: absolute;
     bottom: -8px;
@@ -800,6 +832,20 @@ section {
     background: var(--color-bg-white);
     border-right: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
+}
+
+/* Arrow pointing up for even items */
+.timeline-station:nth-child(even) .station-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: var(--color-bg-white);
+    border-left: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
 }
 
 .station-tooltip h4 {
