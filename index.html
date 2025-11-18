@@ -188,47 +188,203 @@
     </footer>
 
     <script>
-        // Wetter-API Integration
-        async function loadWeather() {
-            const weatherWidget = document.getElementById('weatherWidget');
+        // SPA Navigation System - Flüssige Seitenübergänge
+        (function() {
+            const mainContent = document.querySelector('main');
+            const navLinks = document.querySelectorAll('nav a');
 
+            // Page Cache für geladene Seiten
+            const pageCache = new Map();
+
+            async function loadPage(url, pushState = true) {
+                try {
+                    // Fade-out Animation starten
+                    mainContent.classList.add('page-transitioning');
+
+                    // Prüfen ob Seite im Cache ist
+                    let html;
+                    if (pageCache.has(url)) {
+                        html = pageCache.get(url);
+                    } else {
+                        // Seite vom Server laden
+                        const response = await fetch(url);
+                        html = await response.text();
+
+                        // Im Cache speichern
+                        pageCache.set(url, html);
+                    }
+
+                    // Main-Content aus geladenem HTML extrahieren
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newMain = doc.querySelector('main');
+
+                    // Warten auf Fade-out Animation (300ms)
+                    await new Promise(resolve => setTimeout(resolve, 300));
+
+                    // Main-Content ersetzen
+                    if (newMain) {
+                        mainContent.innerHTML = newMain.innerHTML;
+                        mainContent.className = newMain.className;
+                    }
+
+                    // Navigation aktualisieren
+                    updateActiveNavLink(url);
+
+                    // History State aktualisieren
+                    if (pushState) {
+                        window.history.pushState({ url }, '', url);
+                    }
+
+                    // Fade-in Animation
+                    mainContent.classList.remove('page-transitioning');
+                    mainContent.classList.add('page-loaded');
+
+                    // Scroll nach oben
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                } catch (error) {
+                    console.error('Fehler beim Laden der Seite:', error);
+                    // Bei Fehler normale Navigation durchführen
+                    window.location.href = url;
+                }
+            }
+
+            function updateActiveNavLink(url) {
+                const filename = url.split('/').pop() || 'index.html';
+
+                navLinks.forEach(link => {
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref === filename ||
+                        (filename === '' && linkHref === 'index.html')) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // Navigation Links abfangen
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = link.getAttribute('href');
+
+                    // Nicht neu laden wenn bereits auf der Seite
+                    if (link.classList.contains('active')) {
+                        return;
+                    }
+
+                    loadPage(url);
+                });
+            });
+
+            // Browser Back/Forward Buttons unterstützen
+            window.addEventListener('popstate', (e) => {
+                if (e.state && e.state.url) {
+                    loadPage(e.state.url, false);
+                }
+            });
+
+            // Initial State setzen
+            window.history.replaceState({ url: window.location.pathname }, '', window.location.pathname);
+
+            // Initiale Animation
+            mainContent.classList.add('page-loaded');
+        })();
+    </script>
+
+    <script>
+        // Wetter-API Integration mit localStorage-Caching
+        const CACHE_KEY = 'weatherData';
+        const CACHE_TIMESTAMP_KEY = 'weatherDataTimestamp';
+        const CACHE_DURATION = 30 * 60 * 1000; // 30 Minuten in Millisekunden
+
+        function displayWeather(data) {
+            const weatherWidget = document.getElementById('weatherWidget');
+            const temp = Math.round(data.main.temp);
+            const description = data.weather[0].description;
+            const icon = data.weather[0].icon;
+
+            weatherWidget.innerHTML = `
+                <div class="weather-content">
+                    <div class="weather-icon">
+                        <img src="https://openweathermap.org/img/wn/${icon}.png" alt="${description}">
+                    </div>
+                    <div class="weather-info">
+                        <div class="weather-temp">${temp}°C</div>
+                        <div class="weather-location">Bern</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function displayError() {
+            const weatherWidget = document.getElementById('weatherWidget');
+            weatherWidget.innerHTML = `
+                <div class="weather-content weather-error">
+                    <div class="weather-info">
+                        <div class="weather-temp">--°C</div>
+                        <div class="weather-location">Bern</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function isCacheValid() {
+            const timestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+            if (!timestamp) return false;
+
+            const age = Date.now() - parseInt(timestamp);
+            return age < CACHE_DURATION;
+        }
+
+        function getCachedWeather() {
+            const cached = localStorage.getItem(CACHE_KEY);
+            return cached ? JSON.parse(cached) : null;
+        }
+
+        function setCachedWeather(data) {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+            localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
+        }
+
+        async function fetchWeatherFromAPI() {
             try {
                 const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Bern,CH&units=metric&lang=de&appid=aa60dcf25b93205ccfab20ebb7d7ffe2');
                 const data = await response.json();
 
-                const temp = Math.round(data.main.temp);
-                const description = data.weather[0].description;
-                const icon = data.weather[0].icon;
-
-                weatherWidget.innerHTML = `
-                    <div class="weather-content">
-                        <div class="weather-icon">
-                            <img src="https://openweathermap.org/img/wn/${icon}.png" alt="${description}">
-                        </div>
-                        <div class="weather-info">
-                            <div class="weather-temp">${temp}°C</div>
-                            <div class="weather-location">Bern</div>
-                        </div>
-                    </div>
-                `;
+                // Daten im Cache speichern
+                setCachedWeather(data);
+                displayWeather(data);
             } catch (error) {
                 console.error('Fehler beim Laden der Wetterdaten:', error);
-                weatherWidget.innerHTML = `
-                    <div class="weather-content weather-error">
-                        <div class="weather-info">
-                            <div class="weather-temp">--°C</div>
-                            <div class="weather-location">Bern</div>
-                        </div>
-                    </div>
-                `;
+                displayError();
             }
+        }
+
+        async function loadWeather() {
+            // Prüfen, ob gültige Cache-Daten vorhanden sind
+            if (isCacheValid()) {
+                const cachedData = getCachedWeather();
+                if (cachedData) {
+                    // Sofort gecachte Daten anzeigen
+                    displayWeather(cachedData);
+                    return;
+                }
+            }
+
+            // Keine gültigen Cache-Daten -> API abrufen
+            await fetchWeatherFromAPI();
         }
 
         // Wetter beim Laden der Seite abrufen
         loadWeather();
 
-        // Wetter alle 10 Minuten aktualisieren
-        setInterval(loadWeather, 600000);
+        // Automatische Aktualisierung nach 30 Minuten
+        setInterval(() => {
+            fetchWeatherFromAPI();
+        }, CACHE_DURATION);
     </script>
 </body>
 </html>

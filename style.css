@@ -1751,3 +1751,19 @@ footer {
         display: none;
     }
 }
+
+/* ===================================
+   PAGE TRANSITION ANIMATIONS
+   =================================== */
+
+main {
+    transition: opacity 0.3s ease-in-out;
+}
+
+main.page-transitioning {
+    opacity: 0;
+}
+
+main.page-loaded {
+    opacity: 1;
+}
