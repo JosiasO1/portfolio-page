@@ -124,14 +124,16 @@ header .container {
     letter-spacing: -0.02em;
 }
 
-nav ul {
+nav ul,
+.nav-menu {
     display: flex;
     list-style: none;
     gap: 3rem;
     align-items: center;
 }
 
-nav ul li a {
+nav ul li a,
+.nav-menu li a {
     color: var(--color-text-primary);
     font-weight: 600;
     font-size: 1.05rem;
@@ -139,11 +141,13 @@ nav ul li a {
     transition: opacity 0.3s ease;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+.nav-menu li a:hover {
     opacity: 0.6;
 }
 
-nav ul li a.active {
+nav ul li a.active,
+.nav-menu li a.active {
     color: var(--color-black);
     font-weight: 700;
 }
