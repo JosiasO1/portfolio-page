@@ -111,10 +111,14 @@ header {
 
 header .container {
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
     align-items: center;
     padding-top: 1.35rem;
     padding-bottom: 1.35rem;
+}
+
+header nav {
+    margin-left: auto;
 }
 
 .logo h1 {
@@ -1619,5 +1623,131 @@ footer {
 
     .contact-form-container {
         padding: 2rem 1.5rem;
+    }
+}
+
+/* ===================================
+   WEATHER WIDGET
+   =================================== */
+
+.weather-widget {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.weather-widget:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.weather-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 113, 227, 0.2);
+    border-top-color: rgba(0, 113, 227, 0.8);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.weather-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.weather-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.weather-icon img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.weather-temp {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.weather-location {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    line-height: 1;
+}
+
+.weather-error .weather-temp {
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+}
+
+/* Responsive Anpassungen für Weather Widget */
+@media (max-width: 768px) {
+    .weather-widget {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .weather-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .weather-temp {
+        font-size: 0.95rem;
+    }
+
+    .weather-location {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-widget {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .weather-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .weather-temp {
+        font-size: 0.85rem;
+    }
+
+    .weather-location {
+        display: none;
     }
 }
