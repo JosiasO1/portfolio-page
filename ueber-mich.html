@@ -195,40 +195,46 @@
                 <p class="section-intro">Was mich in meiner Freizeit begeistert</p>
 
                 <div class="hobbys-grid">
-                    <div class="hobby-card">
-                        <div class="hobby-icon">⚽</div>
-                        <h4>Fussball</h4>
-                        <p>Fussball ist eine meiner grössten Leidenschaften. Ob auf dem Platz oder als Fan – der Sport begeistert mich.</p>
+                    <div class="hobby-card hobby-card-football">
+                        <div class="hobby-content">
+                            <h4>Fussball</h4>
+                        </div>
                     </div>
 
-                    <div class="hobby-card">
-                        <div class="hobby-icon">🎾</div>
-                        <h4>Tennis</h4>
-                        <p>Tennis fordert mich heraus und macht gleichzeitig Spass. Ich spiele regelmässig und verbessere mich kontinuierlich.</p>
+                    <div class="hobby-card hobby-card-tennis">
+                        <div class="hobby-content">
+                            <h4>Tennis</h4>
+                        </div>
                     </div>
 
-                    <div class="hobby-card">
-                        <div class="hobby-icon">🏐</div>
-                        <h4>Volleyball</h4>
-                        <p>Volleyball verbindet Teamgeist und Dynamik. Es ist eine tolle Sportart, um aktiv zu bleiben.</p>
+                    <div class="hobby-card hobby-card-volleyball">
+                        <div class="hobby-content">
+                            <h4>Volleyball</h4>
+                        </div>
                     </div>
 
-                    <div class="hobby-card">
-                        <div class="hobby-icon">🏊</div>
-                        <h4>Schwimmen</h4>
-                        <p>Schwimmen ist für mich der perfekte Ausgleich. Es hilft mir, den Kopf frei zu bekommen und fit zu bleiben.</p>
+                    <div class="hobby-card hobby-card-surf">
+                        <div class="hobby-content">
+                            <h4>Surfen</h4>
+                        </div>
                     </div>
 
-                    <div class="hobby-card">
-                        <div class="hobby-icon">✏️</div>
-                        <h4>Zeichnen</h4>
-                        <p>Zeichnen ist meine kreative Ausdrucksform. Ich mag es, Ideen und Gedanken visuell festzuhalten.</p>
+                    <div class="hobby-card hobby-card-fitness">
+                        <div class="hobby-content">
+                            <h4>Fitness</h4>
+                        </div>
                     </div>
 
-                    <div class="hobby-card">
-                        <div class="hobby-icon">🍳</div>
-                        <h4>Kochen</h4>
-                        <p>Kochen ist für mich Kreativität und Genuss zugleich. Ich experimentiere gerne mit neuen Rezepten und internationalen Küchen.</p>
+                    <div class="hobby-card hobby-card-drawing">
+                        <div class="hobby-content">
+                            <h4>Zeichnen</h4>
+                        </div>
+                    </div>
+
+                    <div class="hobby-card hobby-card-cooking">
+                        <div class="hobby-content">
+                            <h4>Kochen</h4>
+                        </div>
                     </div>
                 </div>
 
@@ -511,12 +517,15 @@
 
     <script>
         // Skill Filter System - Filterbare und animierte Skills
-        (function() {
-            const filterButtons = document.querySelectorAll('.skill-filter-btn');
-            const skillBadges = document.querySelectorAll('.skill-badge');
+        // Verwendet Event Delegation um mehrfache Listener-Registrierung zu vermeiden
 
-            // Filter-Funktion
+        (function() {
+            let isInitialized = false;
+
+            // Filter-Funktion (wird bei jedem Laden neu aufgerufen)
             function filterSkills(category) {
+                const skillBadges = document.querySelectorAll('.skill-badge');
+
                 skillBadges.forEach(badge => {
                     const badgeCategory = badge.getAttribute('data-category');
 
@@ -531,21 +540,50 @@
                 });
             }
 
-            // Event Listener für jeden Filter-Button
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Aktiven Button markieren
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+            // Event-Handler mit Event Delegation (nur einmal registriert)
+            function handleFilterClick(e) {
+                // Prüfe ob geklicktes Element ein Filter-Button ist
+                if (!e.target.classList.contains('skill-filter-btn')) return;
 
-                    // Filter anwenden
-                    const filterValue = button.getAttribute('data-filter');
-                    filterSkills(filterValue);
-                });
-            });
+                const button = e.target;
+                const filterButtons = document.querySelectorAll('.skill-filter-btn');
 
-            // Beim Laden: alle Skills anzeigen (Filter "Alle" ist standardmäßig aktiv)
-            filterSkills('all');
+                // Aktiven Button markieren
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter anwenden
+                const filterValue = button.getAttribute('data-filter');
+                filterSkills(filterValue);
+            }
+
+            // Initialisierungs-Funktion
+            function initSkillFilters() {
+                const skillFiltersContainer = document.querySelector('.skill-filters');
+                const skillBadges = document.querySelectorAll('.skill-badge');
+
+                // Nur initialisieren wenn Elemente vorhanden sind
+                if (!skillFiltersContainer || skillBadges.length === 0) return;
+
+                // Event Listener nur einmal registrieren (Event Delegation)
+                if (!isInitialized) {
+                    skillFiltersContainer.addEventListener('click', handleFilterClick);
+                    isInitialized = true;
+                }
+
+                // Beim Laden: alle Skills anzeigen (Filter "Alle" ist standardmäßig aktiv)
+                filterSkills('all');
+            }
+
+            // Initial ausführen beim direkten Laden der Seite
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initSkillFilters);
+            } else {
+                initSkillFilters();
+            }
+
+            // Bei SPA-Navigation re-initialisieren (wichtig für Filter-Funktionalität nach Navigation)
+            document.addEventListener('contentLoaded', initSkillFilters);
         })();
 
         // ANLEITUNG: Neue Skills oder Kategorien hinzufügen

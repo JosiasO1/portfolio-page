@@ -265,6 +265,10 @@
                         mainContent.style.transition = '';
                         mainContent.classList.remove('page-transitioning');
                         mainContent.classList.add('page-loaded');
+
+                        // Custom Event für dynamisch geladenen Content
+                        // Triggert Re-Initialisierung von Skills Filter & Hobby Carousel
+                        document.dispatchEvent(new CustomEvent('contentLoaded'));
                     }, 700);
 
                     // Scroll nach oben

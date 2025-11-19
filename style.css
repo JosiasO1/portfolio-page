@@ -1030,6 +1030,300 @@ section {
     font-size: 0.9375rem;
 }
 
+/* Tennis Card mit Hintergrundbild */
+.hobby-card-tennis {
+    position: relative;
+    background-image: url('./images/roger.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-tennis::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-tennis .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-tennis h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Surf Card mit Hintergrundbild */
+.hobby-card-surf {
+    position: relative;
+    background-image: url('./images/surf.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-surf::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-surf .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-surf h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Football Card mit Vollbild-Hintergrundbild */
+.hobby-card-football {
+    position: relative;
+    background-image: url('./images/Fussball.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-football::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-football .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-football h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Drawing Card mit Hintergrundbild */
+.hobby-card-drawing {
+    position: relative;
+    background-image: url('./images/zeichnen.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-drawing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-drawing .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-drawing h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Fitness Card mit Hintergrundbild */
+.hobby-card-fitness {
+    position: relative;
+    background-image: url('./images/gym.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-fitness::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-fitness .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-fitness h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Cooking Card mit Hintergrundbild */
+.hobby-card-cooking {
+    position: relative;
+    background-image: url('./images/Kochen.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-cooking::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-cooking .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-cooking h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Volleyball Card mit Hintergrundbild */
+.hobby-card-volleyball {
+    position: relative;
+    background-image: url('./images/Volleyball.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hobby-card-volleyball::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 16px;
+}
+
+.hobby-card-volleyball .hobby-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hobby-card-volleyball h4 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 /* Interests */
 .interests-content {
     margin-bottom: 3.5rem;
@@ -1582,6 +1876,76 @@ footer {
     .skill-badge {
         font-size: 0.8rem;
         padding: 0.5rem 0.85rem;
+    }
+
+    /* Tennis Card - Mobile */
+    .hobby-card-tennis {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-tennis h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Surf Card - Mobile */
+    .hobby-card-surf {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-surf h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Football Card - Mobile */
+    .hobby-card-football {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-football h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Drawing Card - Mobile */
+    .hobby-card-drawing {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-drawing h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Fitness Card - Mobile */
+    .hobby-card-fitness {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-fitness h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Cooking Card - Mobile */
+    .hobby-card-cooking {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-cooking h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Volleyball Card - Mobile */
+    .hobby-card-volleyball {
+        min-height: 200px;
+        padding: 1rem;
+    }
+
+    .hobby-card-volleyball h4 {
+        font-size: 1.25rem;
     }
 
     .hero-description {
