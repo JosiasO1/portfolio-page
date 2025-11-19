@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-loading">
     <header>
         <div class="container">
             <div class="logo">
@@ -61,96 +61,94 @@
         <section class="skills-section">
             <div class="container">
                 <h3>Meine Fähigkeiten</h3>
-                <div class="skills-modern-container">
-                    <div class="skill-category-modern">
-                        <h4>Technische Skills</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge" data-icon="🌐">
-                                <span class="skill-icon">🌐</span>
-                                <span class="skill-name">HTML & CSS</span>
-                            </span>
-                            <span class="skill-badge" data-icon="⚡">
-                                <span class="skill-icon">⚡</span>
-                                <span class="skill-name">JavaScript</span>
-                            </span>
-                            <span class="skill-badge" data-icon="⚛️">
-                                <span class="skill-icon">⚛️</span>
-                                <span class="skill-name">React</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🐍">
-                                <span class="skill-icon">🐍</span>
-                                <span class="skill-name">Python</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🗄️">
-                                <span class="skill-icon">🗄️</span>
-                                <span class="skill-name">SQL</span>
-                            </span>
-                            <span class="skill-badge" data-icon="📊">
-                                <span class="skill-icon">📊</span>
-                                <span class="skill-name">R</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🔀">
-                                <span class="skill-icon">🔀</span>
-                                <span class="skill-name">Git</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🔌">
-                                <span class="skill-icon">🔌</span>
-                                <span class="skill-name">REST APIs</span>
-                            </span>
-                        </div>
-                    </div>
 
-                    <div class="skill-category-modern">
-                        <h4>Design & Tools</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge" data-icon="🎨">
-                                <span class="skill-icon">🎨</span>
-                                <span class="skill-name">Figma</span>
-                            </span>
-                            <span class="skill-badge" data-icon="✨">
-                                <span class="skill-icon">✨</span>
-                                <span class="skill-name">UI/UX Design</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🖼️">
-                                <span class="skill-icon">🖼️</span>
-                                <span class="skill-name">Prototyping</span>
-                            </span>
-                            <span class="skill-badge" data-icon="📱">
-                                <span class="skill-icon">📱</span>
-                                <span class="skill-name">Responsive Design</span>
-                            </span>
-                            <span class="skill-badge" data-icon="📋">
-                                <span class="skill-icon">📋</span>
-                                <span class="skill-name">BPMN</span>
-                            </span>
-                        </div>
-                    </div>
+                <!-- Filter Buttons -->
+                <div class="skill-filters">
+                    <button class="skill-filter-btn active" data-filter="all">Alle</button>
+                    <button class="skill-filter-btn" data-filter="tech">Tech</button>
+                    <button class="skill-filter-btn" data-filter="design">Design</button>
+                    <button class="skill-filter-btn" data-filter="soft">Soft Skills</button>
+                </div>
 
-                    <div class="skill-category-modern">
-                        <h4>Kompetenzen</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge" data-icon="🧠">
-                                <span class="skill-icon">🧠</span>
-                                <span class="skill-name">Analytisches Denken</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🔧">
-                                <span class="skill-icon">🔧</span>
-                                <span class="skill-name">Problemlösung</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🤝">
-                                <span class="skill-icon">🤝</span>
-                                <span class="skill-name">Teamarbeit</span>
-                            </span>
-                            <span class="skill-badge" data-icon="🚀">
-                                <span class="skill-icon">🚀</span>
-                                <span class="skill-name">Selbstständigkeit</span>
-                            </span>
-                            <span class="skill-badge" data-icon="📚">
-                                <span class="skill-icon">📚</span>
-                                <span class="skill-name">Lernbereitschaft</span>
-                            </span>
-                        </div>
-                    </div>
+                <!-- Skills Grid (alle Skills in einem Grid, ohne Kategorien) -->
+                <div class="skills-grid">
+                    <!-- Technische Skills - füge neue Tech-Skills hier hinzu mit data-category="tech" -->
+                    <span class="skill-badge" data-category="tech" data-icon="🌐">
+                        <span class="skill-icon">🌐</span>
+                        <span class="skill-name">HTML & CSS</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="⚡">
+                        <span class="skill-icon">⚡</span>
+                        <span class="skill-name">JavaScript</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="⚛️">
+                        <span class="skill-icon">⚛️</span>
+                        <span class="skill-name">React</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="🐍">
+                        <span class="skill-icon">🐍</span>
+                        <span class="skill-name">Python</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="🗄️">
+                        <span class="skill-icon">🗄️</span>
+                        <span class="skill-name">SQL</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="📊">
+                        <span class="skill-icon">📊</span>
+                        <span class="skill-name">R</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="🔀">
+                        <span class="skill-icon">🔀</span>
+                        <span class="skill-name">Git</span>
+                    </span>
+                    <span class="skill-badge" data-category="tech" data-icon="🔌">
+                        <span class="skill-icon">🔌</span>
+                        <span class="skill-name">REST APIs</span>
+                    </span>
+
+                    <!-- Design & Tools - füge neue Design-Skills hier hinzu mit data-category="design" -->
+                    <span class="skill-badge" data-category="design" data-icon="🎨">
+                        <span class="skill-icon">🎨</span>
+                        <span class="skill-name">Figma</span>
+                    </span>
+                    <span class="skill-badge" data-category="design" data-icon="✨">
+                        <span class="skill-icon">✨</span>
+                        <span class="skill-name">UI/UX Design</span>
+                    </span>
+                    <span class="skill-badge" data-category="design" data-icon="🖼️">
+                        <span class="skill-icon">🖼️</span>
+                        <span class="skill-name">Prototyping</span>
+                    </span>
+                    <span class="skill-badge" data-category="design" data-icon="📱">
+                        <span class="skill-icon">📱</span>
+                        <span class="skill-name">Responsive Design</span>
+                    </span>
+                    <span class="skill-badge" data-category="design" data-icon="📋">
+                        <span class="skill-icon">📋</span>
+                        <span class="skill-name">BPMN</span>
+                    </span>
+
+                    <!-- Soft Skills / Kompetenzen - füge neue Soft-Skills hier hinzu mit data-category="soft" -->
+                    <span class="skill-badge" data-category="soft" data-icon="🧠">
+                        <span class="skill-icon">🧠</span>
+                        <span class="skill-name">Analytisches Denken</span>
+                    </span>
+                    <span class="skill-badge" data-category="soft" data-icon="🔧">
+                        <span class="skill-icon">🔧</span>
+                        <span class="skill-name">Problemlösung</span>
+                    </span>
+                    <span class="skill-badge" data-category="soft" data-icon="🤝">
+                        <span class="skill-icon">🤝</span>
+                        <span class="skill-name">Teamarbeit</span>
+                    </span>
+                    <span class="skill-badge" data-category="soft" data-icon="🚀">
+                        <span class="skill-icon">🚀</span>
+                        <span class="skill-name">Selbstständigkeit</span>
+                    </span>
+                    <span class="skill-badge" data-category="soft" data-icon="📚">
+                        <span class="skill-icon">📚</span>
+                        <span class="skill-name">Lernbereitschaft</span>
+                    </span>
                 </div>
             </div>
         </section>
@@ -286,6 +284,139 @@
     </footer>
 
     <script>
+        // Page Load Animation - Klasse nach Animation entfernen
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.body.classList.remove('page-loading');
+            }, 700);
+        });
+    </script>
+
+    <script>
+        // SPA Navigation System - Flüssige Seitenübergänge
+        (function() {
+            const mainContent = document.querySelector('main');
+            const navLinks = document.querySelectorAll('nav a');
+
+            // Page Cache für geladene Seiten
+            const pageCache = new Map();
+
+            async function loadPage(url, pushState = true) {
+                try {
+                    // Fade-out Animation starten
+                    mainContent.classList.add('page-transitioning');
+
+                    // Prüfen ob Seite im Cache ist
+                    let html;
+                    if (pageCache.has(url)) {
+                        html = pageCache.get(url);
+                    } else {
+                        // Seite vom Server laden
+                        const response = await fetch(url);
+                        html = await response.text();
+
+                        // Im Cache speichern
+                        pageCache.set(url, html);
+                    }
+
+                    // Main-Content aus geladenem HTML extrahieren
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newMain = doc.querySelector('main');
+
+                    // Warten auf Fade-out Animation (300ms)
+                    await new Promise(resolve => setTimeout(resolve, 300));
+
+                    // Main-Content ersetzen
+                    if (newMain) {
+                        mainContent.innerHTML = newMain.innerHTML;
+                        mainContent.className = newMain.className;
+                    }
+
+                    // Navigation aktualisieren
+                    updateActiveNavLink(url);
+
+                    // History State aktualisieren
+                    if (pushState) {
+                        window.history.pushState({ url }, '', url);
+                    }
+
+                    // Slide Animation für neue Seite starten
+                    mainContent.style.transform = 'translateY(30px)';
+                    mainContent.style.opacity = '0';
+
+                    // Animation ausführen
+                    requestAnimationFrame(() => {
+                        mainContent.style.transition = 'transform 0.7s ease-out, opacity 0.7s ease-out';
+                        mainContent.style.transform = 'translateY(0)';
+                        mainContent.style.opacity = '1';
+                    });
+
+                    // Cleanup nach Animation
+                    setTimeout(() => {
+                        mainContent.style.transition = '';
+                        mainContent.classList.remove('page-transitioning');
+                        mainContent.classList.add('page-loaded');
+                    }, 700);
+
+                    // Scroll nach oben
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                } catch (error) {
+                    console.error('Fehler beim Laden der Seite:', error);
+                    // Bei Fehler normale Navigation durchführen
+                    window.location.href = url;
+                }
+            }
+
+            function updateActiveNavLink(url) {
+                const filename = url.split('/').pop() || 'index.html';
+
+                navLinks.forEach(link => {
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref === filename ||
+                        (filename === '' && linkHref === 'index.html')) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // Navigation Links abfangen
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = link.getAttribute('href');
+
+                    // Nicht neu laden wenn bereits auf der Seite
+                    if (link.classList.contains('active')) {
+                        return;
+                    }
+
+                    loadPage(url);
+                });
+            });
+
+            // Browser Back/Forward Buttons unterstützen
+            window.addEventListener('popstate', (e) => {
+                if (e.state && e.state.url) {
+                    loadPage(e.state.url, false);
+                }
+            });
+
+            // Initial State setzen
+            window.history.replaceState({ url: window.location.pathname }, '', window.location.pathname);
+
+            // Aktiven Link beim Laden markieren
+            updateActiveNavLink(window.location.pathname);
+
+            // Initiale Animation
+            mainContent.classList.add('page-loaded');
+        })();
+    </script>
+
+    <script>
         // Wetter-API Integration mit localStorage-Caching
         const CACHE_KEY = 'weatherData';
         const CACHE_TIMESTAMP_KEY = 'weatherDataTimestamp';
@@ -376,6 +507,61 @@
         setInterval(() => {
             fetchWeatherFromAPI();
         }, CACHE_DURATION);
+    </script>
+
+    <script>
+        // Skill Filter System - Filterbare und animierte Skills
+        (function() {
+            const filterButtons = document.querySelectorAll('.skill-filter-btn');
+            const skillBadges = document.querySelectorAll('.skill-badge');
+
+            // Filter-Funktion
+            function filterSkills(category) {
+                skillBadges.forEach(badge => {
+                    const badgeCategory = badge.getAttribute('data-category');
+
+                    // Wenn "all" ausgewählt ist oder die Kategorie übereinstimmt
+                    if (category === 'all' || badgeCategory === category) {
+                        // Skill einblenden
+                        badge.classList.remove('hidden');
+                    } else {
+                        // Skill ausblenden
+                        badge.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Event Listener für jeden Filter-Button
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Aktiven Button markieren
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Filter anwenden
+                    const filterValue = button.getAttribute('data-filter');
+                    filterSkills(filterValue);
+                });
+            });
+
+            // Beim Laden: alle Skills anzeigen (Filter "Alle" ist standardmäßig aktiv)
+            filterSkills('all');
+        })();
+
+        // ANLEITUNG: Neue Skills oder Kategorien hinzufügen
+        // 1. Neue Skill-Kategorie hinzufügen:
+        //    - Füge einen neuen Filter-Button hinzu: <button class="skill-filter-btn" data-filter="DEINE_KATEGORIE">Name</button>
+        //    - Füge Skills mit dem passenden data-category hinzu: <span class="skill-badge" data-category="DEINE_KATEGORIE">...</span>
+        //
+        // 2. Neue Skill zu bestehender Kategorie hinzufügen:
+        //    - Kopiere eine bestehende skill-badge und ändere Icon + Name
+        //    - Stelle sicher, dass data-category korrekt gesetzt ist ("tech", "design", oder "soft")
+        //
+        // Beispiel:
+        // <span class="skill-badge" data-category="tech" data-icon="🚀">
+        //     <span class="skill-icon">🚀</span>
+        //     <span class="skill-name">Node.js</span>
+        // </span>
     </script>
 </body>
 </html>

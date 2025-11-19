@@ -6,8 +6,12 @@
     <title>Josias Odermatt - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        // Page Load Animation - Sofort ausführen
+        document.documentElement.classList.add('page-loading');
+    </script>
 </head>
-<body class="futuristic-home">
+<body class="futuristic-home page-loading">
     <!-- Animated Background -->
     <div class="space-background">
         <div class="orb orb-1"></div>
@@ -188,6 +192,15 @@
     </footer>
 
     <script>
+        // Page Load Animation - Klasse nach Animation entfernen
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.body.classList.remove('page-loading');
+            }, 700);
+        });
+    </script>
+
+    <script>
         // SPA Navigation System - Flüssige Seitenübergänge
         (function() {
             const mainContent = document.querySelector('main');
@@ -236,9 +249,23 @@
                         window.history.pushState({ url }, '', url);
                     }
 
-                    // Fade-in Animation
-                    mainContent.classList.remove('page-transitioning');
-                    mainContent.classList.add('page-loaded');
+                    // Slide Animation für neue Seite starten
+                    mainContent.style.transform = 'translateY(30px)';
+                    mainContent.style.opacity = '0';
+
+                    // Animation ausführen
+                    requestAnimationFrame(() => {
+                        mainContent.style.transition = 'transform 0.7s ease-out, opacity 0.7s ease-out';
+                        mainContent.style.transform = 'translateY(0)';
+                        mainContent.style.opacity = '1';
+                    });
+
+                    // Cleanup nach Animation
+                    setTimeout(() => {
+                        mainContent.style.transition = '';
+                        mainContent.classList.remove('page-transitioning');
+                        mainContent.classList.add('page-loaded');
+                    }, 700);
 
                     // Scroll nach oben
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -288,6 +315,9 @@
 
             // Initial State setzen
             window.history.replaceState({ url: window.location.pathname }, '', window.location.pathname);
+
+            // Aktiven Link beim Laden markieren
+            updateActiveNavLink(window.location.pathname);
 
             // Initiale Animation
             mainContent.classList.add('page-loaded');

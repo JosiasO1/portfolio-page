@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-loading">
     <header>
         <div class="container">
             <div class="logo">
@@ -172,6 +172,118 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Page Load Animation - Klasse nach Animation entfernen
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.body.classList.remove('page-loading');
+            }, 700);
+        });
+    </script>
+
+    <script>
+        // SPA Navigation System - Flüssige Seitenübergänge
+        (function() {
+            const mainContent = document.querySelector('main');
+            const navLinks = document.querySelectorAll('nav a');
+
+            const pageCache = new Map();
+
+            async function loadPage(url, pushState = true) {
+                try {
+                    mainContent.classList.add('page-transitioning');
+
+                    let html;
+                    if (pageCache.has(url)) {
+                        html = pageCache.get(url);
+                    } else {
+                        const response = await fetch(url);
+                        html = await response.text();
+                        pageCache.set(url, html);
+                    }
+
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newMain = doc.querySelector('main');
+
+                    await new Promise(resolve => setTimeout(resolve, 300));
+
+                    if (newMain) {
+                        mainContent.innerHTML = newMain.innerHTML;
+                        mainContent.className = newMain.className;
+                    }
+
+                    updateActiveNavLink(url);
+
+                    if (pushState) {
+                        window.history.pushState({ url }, '', url);
+                    }
+
+                    // Slide Animation für neue Seite starten
+                    mainContent.style.transform = 'translateY(30px)';
+                    mainContent.style.opacity = '0';
+
+                    requestAnimationFrame(() => {
+                        mainContent.style.transition = 'transform 0.7s ease-out, opacity 0.7s ease-out';
+                        mainContent.style.transform = 'translateY(0)';
+                        mainContent.style.opacity = '1';
+                    });
+
+                    setTimeout(() => {
+                        mainContent.style.transition = '';
+                        mainContent.classList.remove('page-transitioning');
+                        mainContent.classList.add('page-loaded');
+                    }, 700);
+
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                } catch (error) {
+                    console.error('Fehler beim Laden der Seite:', error);
+                    window.location.href = url;
+                }
+            }
+
+            function updateActiveNavLink(url) {
+                const filename = url.split('/').pop() || 'index.html';
+
+                navLinks.forEach(link => {
+                    const linkHref = link.getAttribute('href');
+                    if (linkHref === filename || (filename === '' && linkHref === 'index.html')) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = link.getAttribute('href');
+
+                    if (link.classList.contains('active')) {
+                        return;
+                    }
+
+                    loadPage(url);
+                });
+            });
+
+            window.addEventListener('popstate', (e) => {
+                if (e.state && e.state.url) {
+                    loadPage(e.state.url, false);
+                }
+            });
+
+            window.history.replaceState({ url: window.location.pathname }, '', window.location.pathname);
+
+            // Aktiven Link beim Laden markieren
+            updateActiveNavLink(window.location.pathname);
+
+            mainContent.classList.add('page-loaded');
+        })();
+    </script>
 
     <script>
         // Wetter-API Integration

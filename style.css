@@ -152,8 +152,20 @@ nav ul li a:hover,
 
 nav ul li a.active,
 .nav-menu li a.active {
-    color: var(--color-black);
-    font-weight: 700;
+    position: relative;
+}
+
+nav ul li a.active::after,
+.nav-menu li a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-black);
+    border-radius: 50%;
 }
 
 /* Hamburger Menu */
@@ -555,42 +567,55 @@ section {
 
 .skills-section h3 {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
     font-size: 2.5rem;
 }
 
-.skills-modern-container {
-    max-width: 900px;
-    margin: 0 auto;
+/* Filter Buttons */
+.skill-filters {
     display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
-.skill-category-modern {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.skill-category-modern h4 {
-    font-size: 0.75rem;
-    color: var(--color-text-secondary);
+.skill-filter-btn {
+    padding: 0.625rem 1.5rem;
+    background: var(--color-bg-white);
+    border: 1.5px solid var(--color-border);
+    border-radius: 24px;
+    font-size: 0.875rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
 }
 
-.skill-badges {
+.skill-filter-btn:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+    transform: translateY(-2px);
+}
+
+.skill-filter-btn.active {
+    background: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-bg-white);
+}
+
+/* Skills Grid (ersetzt skills-modern-container) */
+.skills-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     justify-content: center;
     max-width: 900px;
+    margin: 0 auto;
 }
 
+/* Skill Badge mit Animationen */
 .skill-badge {
     display: inline-flex;
     align-items: center;
@@ -603,13 +628,27 @@ section {
     font-weight: 500;
     color: var(--color-text-primary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    /* Animation für Ein-/Ausblenden */
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover Effekt */
 .skill-badge:hover {
-    transform: translateY(-2px);
+    transform: scale(1) translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-color: var(--color-text-secondary);
+}
+
+/* Hidden State - für Filter */
+.skill-badge.hidden {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+    pointer-events: none;
+    /* Behalte den Platz nicht bei, damit Grid smooth neu anordnet */
+    position: absolute;
+    visibility: hidden;
 }
 
 .skill-icon {
@@ -1523,6 +1562,28 @@ footer {
         font-size: 1.25rem;
     }
 
+    /* Skills Filter Buttons - Mobile */
+    .skill-filters {
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+
+    .skill-filter-btn {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.8rem;
+    }
+
+    /* Skills Grid - Mobile */
+    .skills-grid {
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+
+    .skill-badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.85rem;
+    }
+
     .hero-description {
         font-size: 1rem;
     }
@@ -1756,6 +1817,7 @@ footer {
    PAGE TRANSITION ANIMATIONS
    =================================== */
 
+/* Für SPA Navigation (falls aktiviert) */
 main {
     transition: opacity 0.3s ease-in-out;
 }
@@ -1766,4 +1828,20 @@ main.page-transitioning {
 
 main.page-loaded {
     opacity: 1;
+}
+
+/* Slide Animation für normale Page Loads */
+body.page-loading main {
+    animation: slideIn 0.7s ease-out forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
