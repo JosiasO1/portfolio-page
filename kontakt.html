@@ -80,15 +80,15 @@
                             <h4>Folge mir</h4>
                             <div class="social-icons">
                                 <a href="https://www.linkedin.com/in/josias-odermatt-1131512a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app " class="social-icon" title="LinkedIn">
-                                    <span>💼</span>
+                                    <img src="images/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="LinkedIn" class="contact-icon">
                                     LinkedIn
                                 </a>
                                 <a href="https://github.com/JosiasO1" class="social-icon" title="GitHub">
-                                    <span>🔗</span>
+                                    <img src="images/github_PNG40.png" alt="GitHub" class="contact-icon">
                                     GitHub
                                 </a>
                                 <a href="https://www.instagram.com/josias.odermatt" class="social-icon" title="Instagram">
-                                    <span>📷</span>
+                                    <img src="images/Instagram-Logo.png" alt="Instagram" class="contact-icon">
                                     Instagram
                                 </a>
                             </div>
@@ -212,6 +212,11 @@
                         mainContent.style.opacity = '1';
                     });
 
+                    // Custom Event NACH DOM-Update auslösen
+                    requestAnimationFrame(() => {
+                        window.dispatchEvent(new CustomEvent('pageContentLoaded'));
+                    });
+
                     setTimeout(() => {
                         mainContent.style.transition = '';
                         mainContent.classList.remove('page-transitioning');
@@ -309,6 +314,36 @@
 
         // Wetter alle 10 Minuten aktualisieren
         setInterval(loadWeather, 600000);
+    </script>
+
+    <script>
+        // GLOBALE SKILL-FILTER FUNKTIONEN
+        if (!window.skillFilterInitialized) {
+            window.skillFilterInitialized = true;
+
+            window.filterSkills = function(category) {
+                const skillBadges = document.querySelectorAll('.skill-badge');
+                skillBadges.forEach(badge => {
+                    const badgeCategory = badge.getAttribute('data-category');
+                    if (category === 'all' || badgeCategory === category) {
+                        badge.classList.remove('hidden');
+                    } else {
+                        badge.classList.add('hidden');
+                    }
+                });
+            };
+
+            document.body.addEventListener('click', function(e) {
+                if (e.target.classList.contains('skill-filter-btn')) {
+                    document.querySelectorAll('.skill-filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    const filterValue = e.target.getAttribute('data-filter');
+                    window.filterSkills(filterValue);
+                }
+            });
+        }
     </script>
 </body>
 </html>

@@ -34,6 +34,8 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    -webkit-touch-callout: none;
 }
 
 body {
@@ -591,12 +593,20 @@ section {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: var(--font-primary);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .skill-filter-btn:hover {
     border-color: var(--color-text-primary);
     color: var(--color-text-primary);
     transform: translateY(-2px);
+}
+
+.skill-filter-btn:active {
+    transform: scale(0.95);
 }
 
 .skill-filter-btn.active {
@@ -632,6 +642,8 @@ section {
     opacity: 1;
     transform: scale(1) translateY(0);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 /* Hover Effekt */
@@ -639,6 +651,11 @@ section {
     transform: scale(1) translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-color: var(--color-text-secondary);
+}
+
+/* Active Effekt für Touch */
+.skill-badge:active {
+    transform: scale(0.96);
 }
 
 /* Hidden State - für Filter */
@@ -649,6 +666,16 @@ section {
     /* Behalte den Platz nicht bei, damit Grid smooth neu anordnet */
     position: absolute;
     visibility: hidden;
+}
+
+/* Performance-Optimierung für Animationen */
+.skill-badge,
+.skill-filter-btn {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
 }
 
 .skill-icon {
@@ -1485,6 +1512,157 @@ section {
 }
 
 /* ===================================
+   QUOTE OF THE DAY SECTION - ENHANCED HIGHLIGHT
+   =================================== */
+
+.quote-section {
+    padding: 2rem 0 4rem 0;
+}
+
+/* Main quote card - elevated design with stronger presence */
+.quote-card {
+    /* ANPASSBAR: Hintergrundfarbe des Zitat-Bereichs */
+    background: linear-gradient(135deg, #e8e8ed 0%, #f0f0f5 100%);
+
+    border-radius: 24px;
+
+    /* ANPASSBAR: Padding für mehr/weniger Weißraum */
+    padding: 3.5rem 3rem;
+
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    /* Stronger shadow for elevation */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.4s ease;
+}
+
+.quote-card:hover {
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.16);
+    transform: translateY(-4px);
+}
+
+/* ANPASSBAR: Accent bar color - farbiger Akzentbalken oben */
+.quote-accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00d4ff 0%, #a78bfa 100%);
+    border-radius: 24px 24px 0 0;
+}
+
+/* Large decorative watermark quote symbol */
+.quote-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20rem;
+    font-family: Georgia, serif;
+    color: rgba(0, 0, 0, 0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.quote-content {
+    position: relative;
+    z-index: 1;
+
+    /* ANPASSBAR: max-width für optimale Lesbarkeit */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Heading "Zitat des Tages" */
+.quote-heading {
+    font-size: 0.875rem;
+    font-weight: 600;
+
+    /* ANPASSBAR: Akzentfarbe für Überschrift */
+    color: #6b7280;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* HAUPTELEMENT: Das Zitat selbst - größer und prominenter */
+.quote-text {
+    /* ANPASSBAR: Schriftgröße des Zitats (Desktop) */
+    font-size: 1.75rem;
+
+    line-height: 1.7;
+    color: var(--color-text-primary);
+
+    /* ANPASSBAR: Schriftstärke */
+    font-weight: 600;
+
+    margin: 0 0 2rem 0;
+    font-style: italic;
+
+    /* Bessere Lesbarkeit durch begrenzten Text-Container */
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Autor - dezenter, kleiner */
+.quote-author {
+    font-size: 1.0625rem;
+
+    /* ANPASSBAR: Farbe des Autoren-Namens */
+    color: #9ca3af;
+
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .quote-section {
+        padding: 1.5rem 0 3rem 0;
+    }
+
+    .quote-card {
+        padding: 2.5rem 1.75rem;
+        border-radius: 20px;
+    }
+
+    .quote-accent-bar {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .quote-heading {
+        font-size: 0.8125rem;
+        letter-spacing: 1.2px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Zitat auf Mobile immer noch prominent */
+    .quote-text {
+        font-size: 1.375rem;
+        line-height: 1.6;
+        max-width: 95%;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+    }
+
+    /* Watermark kleiner auf Mobile */
+    .quote-watermark {
+        font-size: 12rem;
+    }
+}
+
+/* ===================================
    CONTACT
    =================================== */
 
@@ -1576,6 +1754,13 @@ section {
 
 .social-icon span {
     font-size: 1.25rem;
+}
+
+.contact-icon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    margin-right: 0.75rem;
 }
 
 /* Contact Form */
@@ -2207,5 +2392,171 @@ body.page-loading main {
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* ===================================
+   MODAL / OVERLAY SYSTEM
+   =================================== */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-container {
+    position: relative;
+    background: var(--color-bg-white);
+    border-radius: 20px;
+    width: 90vw;
+    max-width: 1400px;
+    height: 85vh;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-content {
+    padding: 2rem;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.modal-content h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+#matchcenter-iframe {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-bg-white);
+}
+
+.iframe-fallback {
+    text-align: center;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.iframe-fallback p {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--color-black);
+    color: var(--color-bg-white);
+    border: 2px solid var(--color-black);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Mobile Anpassungen */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 98%;
+        height: 95vh;
+    }
+
+    .modal-content {
+        padding: 2rem 1rem;
+    }
+
+    .modal-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.75rem;
     }
 }

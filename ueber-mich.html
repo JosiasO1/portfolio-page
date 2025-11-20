@@ -2,7 +2,9 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Portfolio - Über mich</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -275,7 +277,6 @@
                 </div>
             </div>
         </section>
-    </main>
 
     <footer>
         <div class="container">
@@ -356,6 +357,13 @@
                         mainContent.style.transition = 'transform 0.7s ease-out, opacity 0.7s ease-out';
                         mainContent.style.transform = 'translateY(0)';
                         mainContent.style.opacity = '1';
+                    });
+
+                    // Custom Event NACH DOM-Update auslösen (wichtig für Event-Listener!)
+                    requestAnimationFrame(() => {
+                        console.log('🚀 Dispatching pageContentLoaded event');
+                        window.dispatchEvent(new CustomEvent('pageContentLoaded'));
+                        console.log('✅ pageContentLoaded event dispatched');
                     });
 
                     // Cleanup nach Animation
@@ -515,76 +523,46 @@
         }, CACHE_DURATION);
     </script>
 
-    <script>
-        // Skill Filter System - Filterbare und animierte Skills
-        // Verwendet Event Delegation um mehrfache Listener-Registrierung zu vermeiden
+    <script id="skill-filter-script">
+        // Skill Filter System - MUSS in index.html definiert sein für globale Verfügbarkeit
+        // Dieser Code ist nur als Fallback, falls direkt auf ueber-mich.html zugegriffen wird
 
-        (function() {
-            let isInitialized = false;
+        if (!window.skillFilterInitialized) {
+            window.skillFilterInitialized = true;
 
-            // Filter-Funktion (wird bei jedem Laden neu aufgerufen)
-            function filterSkills(category) {
+            // Filter-Funktion global definieren
+            window.filterSkills = function(category) {
                 const skillBadges = document.querySelectorAll('.skill-badge');
-
                 skillBadges.forEach(badge => {
                     const badgeCategory = badge.getAttribute('data-category');
-
-                    // Wenn "all" ausgewählt ist oder die Kategorie übereinstimmt
                     if (category === 'all' || badgeCategory === category) {
-                        // Skill einblenden
                         badge.classList.remove('hidden');
                     } else {
-                        // Skill ausblenden
                         badge.classList.add('hidden');
                     }
                 });
-            }
+            };
 
-            // Event-Handler mit Event Delegation (nur einmal registriert)
-            function handleFilterClick(e) {
-                // Prüfe ob geklicktes Element ein Filter-Button ist
-                if (!e.target.classList.contains('skill-filter-btn')) return;
-
-                const button = e.target;
-                const filterButtons = document.querySelectorAll('.skill-filter-btn');
-
-                // Aktiven Button markieren
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                // Filter anwenden
-                const filterValue = button.getAttribute('data-filter');
-                filterSkills(filterValue);
-            }
-
-            // Initialisierungs-Funktion
-            function initSkillFilters() {
-                const skillFiltersContainer = document.querySelector('.skill-filters');
-                const skillBadges = document.querySelectorAll('.skill-badge');
-
-                // Nur initialisieren wenn Elemente vorhanden sind
-                if (!skillFiltersContainer || skillBadges.length === 0) return;
-
-                // Event Listener nur einmal registrieren (Event Delegation)
-                if (!isInitialized) {
-                    skillFiltersContainer.addEventListener('click', handleFilterClick);
-                    isInitialized = true;
+            // Event Delegation auf BODY
+            document.body.addEventListener('click', function(e) {
+                if (e.target.classList.contains('skill-filter-btn')) {
+                    document.querySelectorAll('.skill-filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    const filterValue = e.target.getAttribute('data-filter');
+                    window.filterSkills(filterValue);
                 }
+            });
+        }
 
-                // Beim Laden: alle Skills anzeigen (Filter "Alle" ist standardmäßig aktiv)
-                filterSkills('all');
+        // Ersten Button aktivieren
+        setTimeout(function() {
+            const firstBtn = document.querySelector('.skill-filter-btn');
+            if (firstBtn && !firstBtn.classList.contains('active')) {
+                firstBtn.classList.add('active');
             }
-
-            // Initial ausführen beim direkten Laden der Seite
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initSkillFilters);
-            } else {
-                initSkillFilters();
-            }
-
-            // Bei SPA-Navigation re-initialisieren (wichtig für Filter-Funktionalität nach Navigation)
-            document.addEventListener('contentLoaded', initSkillFilters);
-        })();
+        }, 100);
 
         // ANLEITUNG: Neue Skills oder Kategorien hinzufügen
         // 1. Neue Skill-Kategorie hinzufügen:
@@ -601,5 +579,6 @@
         //     <span class="skill-name">Node.js</span>
         // </span>
     </script>
+
 </body>
 </html>

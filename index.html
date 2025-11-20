@@ -2,7 +2,9 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Josias Odermatt - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,8 +33,8 @@
                 </div>
             </div>
             <nav>
-                <input type="checkbox" id="menu-toggle">
-                <label for="menu-toggle" class="hamburger">
+                <input type="checkbox" id="menu-toggle" aria-label="Navigationsmenü öffnen/schließen">
+                <label for="menu-toggle" class="hamburger" aria-label="Menü">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -64,7 +66,7 @@
                             BSc in Digital Business & AI
                         </p>
                         <p class="hero-description">
-                            Ich bin leidenschaftlich daran interessiert, kreative und innovative Lösungen zu entwickeln. Auf dieser Webseite findest du einen Überblick über meine Arbeit, meine Interessen und meinen beruflichen Werdegang.
+                            Ich bin leidenschaftlich daran interessiert, kreative und innovative Lösungen zu entwickeln. Auf dieser Webseite findest du einen Überblick über meine Interessen und meinen beruflichen Werdegang.
                         </p>
                         <div class="hero-cta">
                             <a href="ueber-mich.html" class="btn-futuristic btn-primary-glow">
@@ -260,15 +262,24 @@
                         mainContent.style.opacity = '1';
                     });
 
+                    // Custom Event NACH DOM-Update auslösen
+                    requestAnimationFrame(() => {
+                        window.dispatchEvent(new CustomEvent('pageContentLoaded'));
+
+                        // Ersten Skill-Filter Button aktivieren
+                        setTimeout(() => {
+                            const firstBtn = document.querySelector('.skill-filter-btn');
+                            if (firstBtn && !firstBtn.classList.contains('active')) {
+                                firstBtn.classList.add('active');
+                            }
+                        }, 100);
+                    });
+
                     // Cleanup nach Animation
                     setTimeout(() => {
                         mainContent.style.transition = '';
                         mainContent.classList.remove('page-transitioning');
                         mainContent.classList.add('page-loaded');
-
-                        // Custom Event für dynamisch geladenen Content
-                        // Triggert Re-Initialisierung von Skills Filter & Hobby Carousel
-                        document.dispatchEvent(new CustomEvent('contentLoaded'));
                     }, 700);
 
                     // Scroll nach oben
@@ -326,6 +337,36 @@
             // Initiale Animation
             mainContent.classList.add('page-loaded');
         })();
+    </script>
+
+    <script>
+        // GLOBALE SKILL-FILTER FUNKTIONEN
+        if (!window.skillFilterInitialized) {
+            window.skillFilterInitialized = true;
+
+            window.filterSkills = function(category) {
+                const skillBadges = document.querySelectorAll('.skill-badge');
+                skillBadges.forEach(badge => {
+                    const badgeCategory = badge.getAttribute('data-category');
+                    if (category === 'all' || badgeCategory === category) {
+                        badge.classList.remove('hidden');
+                    } else {
+                        badge.classList.add('hidden');
+                    }
+                });
+            };
+
+            document.body.addEventListener('click', function(e) {
+                if (e.target.classList.contains('skill-filter-btn')) {
+                    document.querySelectorAll('.skill-filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    e.target.classList.add('active');
+                    const filterValue = e.target.getAttribute('data-filter');
+                    window.filterSkills(filterValue);
+                }
+            });
+        }
     </script>
 
     <script>
