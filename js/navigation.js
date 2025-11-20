@@ -46,9 +46,36 @@
                 window.history.pushState({ url }, '', url);
             }
 
-            // Fade-in Animation
-            mainContent.classList.remove('page-transitioning');
-            mainContent.classList.add('page-loaded');
+            // Slide Animation für neue Seite starten
+            mainContent.style.transform = 'translateY(30px)';
+            mainContent.style.opacity = '0';
+
+            // Animation ausführen
+            requestAnimationFrame(() => {
+                mainContent.style.transition = 'transform 0.7s ease-out, opacity 0.7s ease-out';
+                mainContent.style.transform = 'translateY(0)';
+                mainContent.style.opacity = '1';
+            });
+
+            // Custom Event NACH DOM-Update auslösen
+            requestAnimationFrame(() => {
+                window.dispatchEvent(new CustomEvent('pageContentLoaded'));
+
+                // Ersten Skill-Filter Button aktivieren
+                setTimeout(() => {
+                    const firstBtn = document.querySelector('.skill-filter-btn');
+                    if (firstBtn && !firstBtn.classList.contains('active')) {
+                        firstBtn.classList.add('active');
+                    }
+                }, 100);
+            });
+
+            // Cleanup nach Animation
+            setTimeout(() => {
+                mainContent.style.transition = '';
+                mainContent.classList.remove('page-transitioning');
+                mainContent.classList.add('page-loaded');
+            }, 700);
 
             // Scroll nach oben
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -98,6 +125,9 @@
 
     // Initial State setzen
     window.history.replaceState({ url: window.location.pathname }, '', window.location.pathname);
+
+    // Aktiven Link beim Laden markieren
+    updateActiveNavLink(window.location.pathname);
 
     // Initiale Animation
     mainContent.classList.add('page-loaded');
