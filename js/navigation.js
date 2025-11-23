@@ -60,14 +60,6 @@
             // Custom Event NACH DOM-Update auslösen
             requestAnimationFrame(() => {
                 window.dispatchEvent(new CustomEvent('pageContentLoaded'));
-
-                // Ersten Skill-Filter Button aktivieren
-                setTimeout(() => {
-                    const firstBtn = document.querySelector('.skill-filter-btn');
-                    if (firstBtn && !firstBtn.classList.contains('active')) {
-                        firstBtn.classList.add('active');
-                    }
-                }, 100);
             });
 
             // Cleanup nach Animation
