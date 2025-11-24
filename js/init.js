@@ -8,7 +8,7 @@ function initInteractions() {
     initSkillFilters();
 
     // 2. Timeline-Interaktionen (falls vorhanden)
-    initTimeline();
+    initTimelineInteractions();
 
     // 3. Weitere zukünftige Initialisierungen können hier hinzugefügt werden
 
@@ -25,12 +25,61 @@ function initSkillFilters() {
 }
 
 // Timeline-Interaktionen (falls Timeline vorhanden)
-function initTimeline() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    if (timelineItems.length > 0) {
-        console.log(`✓ Timeline initialized with ${timelineItems.length} items`);
-        // Hier könnten Timeline-spezifische Interaktionen hinzugefügt werden
+function initTimelineInteractions() {
+    const stations = document.querySelectorAll('.timeline-station');
+    const infoBox = document.getElementById('timelineInfoBox');
+    const infoTitle = document.getElementById('infoBoxTitle');
+    const infoPeriod = document.getElementById('infoBoxPeriod');
+    const infoCompany = document.getElementById('infoBoxCompany');
+    const infoDescription = document.getElementById('infoBoxDescription');
+
+    if (!infoBox || stations.length === 0) {
+        console.log('ℹ️ No timeline found on this page');
+        return;
     }
+
+    console.log(`✓ Timeline found with ${stations.length} stations`);
+
+    stations.forEach(station => {
+        // Add cursor pointer style
+        station.style.cursor = 'pointer';
+
+        station.onclick = function(e) {
+            e.preventDefault();
+
+            // Remove active class from all stations
+            document.querySelectorAll('.timeline-station').forEach(s => {
+                s.classList.remove('station-active');
+            });
+
+            // Add active class to clicked station
+            this.classList.add('station-active');
+
+            // Get data from attributes
+            const title = this.dataset.title || '';
+            const period = this.dataset.period || '';
+            const company = this.dataset.company || '';
+            const description = this.dataset.description || '';
+
+            // Update info box content
+            infoTitle.textContent = title;
+            infoPeriod.textContent = period;
+            infoCompany.textContent = company;
+            infoDescription.textContent = description;
+
+            // Show info box with animation
+            infoBox.classList.add('visible');
+
+            // Scroll info box into view smoothly
+            setTimeout(() => {
+                infoBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 150);
+
+            console.log('✓ Timeline station clicked:', title);
+        };
+    });
+
+    console.log('✓ Timeline click handlers attached');
 }
 
 // Bei DOMContentLoaded ausführen
