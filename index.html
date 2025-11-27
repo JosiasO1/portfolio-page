@@ -157,6 +157,29 @@
             </div>
         </section>
 
+        <!-- Quote of the Day Section -->
+        <section class="quote-of-day-section">
+            <div class="container">
+                <div class="quote-of-day-card" id="quoteOfDay">
+                    <div class="quote-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Lade inspirierenden Spruch...</p>
+                    </div>
+                    <div class="quote-content" style="display: none;">
+                        <svg class="quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 8H6V14H10V8Z" fill="currentColor" opacity="0.3"/>
+                            <path d="M18 8H14V14H18V8Z" fill="currentColor" opacity="0.3"/>
+                            <path d="M6 8V14H10V8H6ZM10 14L7 17H10V14Z" fill="currentColor"/>
+                            <path d="M14 8V14H18V8H14ZM18 14L15 17H18V14Z" fill="currentColor"/>
+                        </svg>
+                        <blockquote class="quote-text" id="quoteText"></blockquote>
+                        <p class="quote-author" id="quoteAuthor"></p>
+                        <p class="quote-label">💡 Spruch des Tages</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Global Footer mit Kontakt-Links -->
@@ -186,6 +209,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
+    <script src="js/quote-of-day.js"></script>
     <script src="js/init.js"></script>
 </body>
 </html>

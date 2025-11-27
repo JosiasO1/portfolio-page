@@ -89,9 +89,3 @@ if (document.readyState === 'loading') {
     // DOM bereits geladen
     initInteractions();
 }
-
-// Event für Page-Transitions bereitstellen
-window.addEventListener('pageContentLoaded', () => {
-    console.log('🔄 Page content loaded, reinitializing interactions...');
-    initInteractions();
-});
