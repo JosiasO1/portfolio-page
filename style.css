@@ -927,52 +927,89 @@ section {
     display: none;
 }
 
-/* Timeline Info Box */
+/* Timeline Info Box - Enhanced Floating Design */
 .timeline-info-box {
     max-width: 700px;
     margin: 3rem auto 0;
-    padding: 2rem;
-    background: var(--color-bg-gray);
-    border-radius: 20px;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
     text-align: center;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.95);
     visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08),
+        0 10px 30px rgba(0, 0, 0, 0.05),
+        0 0 0 1px rgba(0, 113, 227, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gradient overlay effect */
+.timeline-info-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--color-accent) 50%,
+        transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .timeline-info-box.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-5px) scale(1);
     visibility: visible;
 }
 
+.timeline-info-box.visible::before {
+    opacity: 0.8;
+}
+
 .info-box-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.75rem;
+    font-weight: 700;
     color: var(--color-text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
 }
 
 .info-box-period {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--color-accent);
-    font-weight: 500;
-    margin-bottom: 0.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
 }
 
 .info-box-company {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--color-text-secondary);
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
 }
 
 .info-box-description {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     color: var(--color-text-secondary);
-    line-height: 1.7;
+    line-height: 1.8;
     margin: 0;
+    position: relative;
+    z-index: 1;
 }
 
 /* Timeline Station Active State */
@@ -993,11 +1030,20 @@ section {
 @media (max-width: 768px) {
     .timeline-info-box {
         margin: 2rem 1rem 0;
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
     }
 
     .info-box-title {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
+    }
+
+    .info-box-period {
+        font-size: 0.9375rem;
+    }
+
+    .info-box-description {
+        font-size: 1rem;
     }
 }
 
@@ -1075,24 +1121,162 @@ section {
     font-size: 1.125rem;
 }
 
-.hobbys-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+/* 3D Carousel Wrapper */
+.hobby-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Carousel Container */
+.hobby-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    perspective: 2000px;
+    overflow: visible;
+}
+
+/* Carousel Track */
+.hobby-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+/* Carousel Slide - Default (hidden) */
+.hobby-carousel-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 420px;
+    height: 340px;
+    transform-origin: center center;
+    transition: all 0.35s ease;
+    will-change: transform, opacity, filter;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.3);
+}
+
+/* Active Card (Center) */
+.hobby-carousel-slide.carousel-slide-active {
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) translateZ(0) scale(1.02);
+    filter: blur(0px);
+}
+
+/* Previous Card (Left) */
+.hobby-carousel-slide.carousel-slide-prev {
+    opacity: 0.5;
+    z-index: 3;
+    transform: translate(-50%, -50%) translateX(-85%) translateZ(-150px) scale(0.85) rotateY(20deg);
+    filter: blur(3px);
+}
+
+/* Next Card (Right) */
+.hobby-carousel-slide.carousel-slide-next {
+    opacity: 0.5;
+    z-index: 3;
+    transform: translate(-50%, -50%) translateX(85%) translateZ(-150px) scale(0.85) rotateY(-20deg);
+    filter: blur(3px);
+}
+
+/* Hidden Cards */
+.hobby-carousel-slide.carousel-slide-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+/* Slide Card Styling */
+.hobby-carousel-slide .hobby-card {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.hobby-carousel-slide.carousel-slide-active .hobby-card {
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+}
+
+/* Navigation Buttons */
+.carousel-nav {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.carousel-nav:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 1) 100%);
+}
+
+.carousel-nav:active {
+    transform: scale(0.95);
+}
+
+.carousel-nav svg {
+    color: var(--color-primary);
+}
+
+/* Dot Indicators */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem 0 4rem 0;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot:hover {
+    transform: scale(1.2);
+    background: rgba(0, 113, 227, 0.3);
+}
+
+.carousel-dot.active {
+    background: var(--color-primary);
+    transform: scale(1.3);
 }
 
 .hobby-card {
     background-color: var(--color-bg-gray);
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 20px;
     text-align: center;
-    transition: all 0.3s ease;
-}
-
-.hobby-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
 }
 
 .hobby-icon {
@@ -1763,13 +1947,127 @@ section {
 }
 
 /* ===================================
+   QUOTE OF THE DAY SECTION
+   =================================== */
+
+.quote-of-day-section {
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.quote-of-day-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08),
+        0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-of-day-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--color-accent) 50%,
+        transparent 100%);
+}
+
+.quote-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.quote-loading p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+}
+
+.quote-content {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.quote-icon {
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.quote-author {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.quote-label {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1.5rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .quote-of-day-section {
+        padding: 3rem 0;
+    }
+
+    .quote-of-day-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .quote-text {
+        font-size: 1.25rem;
+    }
+
+    .quote-author {
+        font-size: 1rem;
+    }
+}
+
+/* ===================================
    GLOBAL FOOTER WITH CONTACT LINKS
    =================================== */
 
 .global-footer {
     background-color: var(--color-bg-gray);
     padding: 3rem 0;
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .global-footer .footer-content {
@@ -2057,9 +2355,54 @@ section {
 
     /* Grids */
     .values-grid,
-    .hobbys-grid,
     .interests-list {
         grid-template-columns: 1fr;
+    }
+
+    /* Hobby Carousel - Mobile */
+    .hobby-carousel-wrapper {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .hobby-carousel-container {
+        max-width: 100%;
+        height: 300px;
+    }
+
+    .hobby-carousel-slide {
+        width: 300px;
+        height: 250px;
+    }
+
+    .hobby-carousel-slide.carousel-slide-active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .hobby-carousel-slide.carousel-slide-prev {
+        transform: translate(-50%, -50%) translateX(-75%) translateZ(-100px) scale(0.7) rotateY(15deg);
+        opacity: 0.4;
+        filter: blur(2px);
+    }
+
+    .hobby-carousel-slide.carousel-slide-next {
+        transform: translate(-50%, -50%) translateX(75%) translateZ(-100px) scale(0.7) rotateY(-15deg);
+        opacity: 0.4;
+        filter: blur(2px);
+    }
+
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-nav svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .carousel-dots {
+        margin: 1.5rem 0 3rem 0;
     }
 
     .timeline-stations {
@@ -2270,20 +2613,7 @@ section {
    PAGE TRANSITION ANIMATIONS
    =================================== */
 
-/* Für SPA Navigation (falls aktiviert) */
-main {
-    transition: opacity 0.3s ease-in-out;
-}
-
-main.page-transitioning {
-    opacity: 0;
-}
-
-main.page-loaded {
-    opacity: 1;
-}
-
-/* Slide Animation für normale Page Loads */
+/* Smooth page load animation */
 body.page-loading main {
     animation: slideIn 0.7s ease-out forwards;
 }

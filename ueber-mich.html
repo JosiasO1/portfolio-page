@@ -162,49 +162,81 @@
                 <h3>Meine Hobbys</h3>
                 <p class="section-intro">Was mich in meiner Freizeit begeistert</p>
 
-                <div class="hobbys-grid">
-                    <div class="hobby-card hobby-card-football">
-                        <div class="hobby-content">
-                            <h4>Fussball</h4>
+                <div class="hobby-carousel-wrapper">
+                    <button class="carousel-nav carousel-nav-prev" aria-label="Vorheriges Hobby">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+
+                    <div class="hobby-carousel-container">
+                        <div class="hobby-carousel-track">
+                            <div class="hobby-carousel-slide" data-hobby="football">
+                                <div class="hobby-card hobby-card-football">
+                                    <div class="hobby-content">
+                                        <h4>Fussball</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hobby-carousel-slide" data-hobby="tennis">
+                                <div class="hobby-card hobby-card-tennis">
+                                    <div class="hobby-content">
+                                        <h4>Tennis</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hobby-carousel-slide" data-hobby="volleyball">
+                                <div class="hobby-card hobby-card-volleyball">
+                                    <div class="hobby-content">
+                                        <h4>Volleyball</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hobby-carousel-slide" data-hobby="surf">
+                                <div class="hobby-card hobby-card-surf">
+                                    <div class="hobby-content">
+                                        <h4>Surfen</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hobby-carousel-slide" data-hobby="fitness">
+                                <div class="hobby-card hobby-card-fitness">
+                                    <div class="hobby-content">
+                                        <h4>Fitness</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hobby-carousel-slide" data-hobby="drawing">
+                                <div class="hobby-card hobby-card-drawing">
+                                    <div class="hobby-content">
+                                        <h4>Zeichnen</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hobby-carousel-slide" data-hobby="cooking">
+                                <div class="hobby-card hobby-card-cooking">
+                                    <div class="hobby-content">
+                                        <h4>Kochen</h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="hobby-card hobby-card-tennis">
-                        <div class="hobby-content">
-                            <h4>Tennis</h4>
-                        </div>
-                    </div>
-
-                    <div class="hobby-card hobby-card-volleyball">
-                        <div class="hobby-content">
-                            <h4>Volleyball</h4>
-                        </div>
-                    </div>
-
-                    <div class="hobby-card hobby-card-surf">
-                        <div class="hobby-content">
-                            <h4>Surfen</h4>
-                        </div>
-                    </div>
-
-                    <div class="hobby-card hobby-card-fitness">
-                        <div class="hobby-content">
-                            <h4>Fitness</h4>
-                        </div>
-                    </div>
-
-                    <div class="hobby-card hobby-card-drawing">
-                        <div class="hobby-content">
-                            <h4>Zeichnen</h4>
-                        </div>
-                    </div>
-
-                    <div class="hobby-card hobby-card-cooking">
-                        <div class="hobby-content">
-                            <h4>Kochen</h4>
-                        </div>
-                    </div>
+                    <button class="carousel-nav carousel-nav-next" aria-label="Nächstes Hobby">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
                 </div>
+
+                <div class="carousel-dots"></div>
 
                 <div class="interests-content">
                     <h4 class="interests-title">Weitere Interessen</h4>
@@ -272,6 +304,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
+    <script src="js/hobby-carousel.js"></script>
     <script src="js/init.js"></script>
 </body>
 </html>
