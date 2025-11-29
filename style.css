@@ -536,6 +536,113 @@ nav ul li a.active::after,
 }
 
 /* ===================================
+   WERDEGANG HERO SECTION
+   =================================== */
+
+.werdegang-hero {
+    background: linear-gradient(180deg, rgba(247, 249, 252, 0.6) 0%, rgba(255, 255, 255, 1) 100%);
+    padding: 5rem 0 4.5rem 0;
+    position: relative;
+}
+
+.werdegang-header {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.werdegang-title {
+    font-size: 3.25rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.werdegang-subtitle {
+    font-size: 1.25rem;
+    color: #6a6a6a;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+}
+
+.cv-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cv-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #0071E3 0%, #0077ED 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    letter-spacing: 0.01em;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.15), 0 2px 6px rgba(0, 113, 227, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 16px 16px 0 0;
+    pointer-events: none;
+}
+
+.cv-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.cv-text {
+    line-height: 1;
+}
+
+.cv-button:hover {
+    background: linear-gradient(135deg, #0077ED 0%, #0080FF 100%);
+    box-shadow: 0 8px 26px rgba(0, 113, 227, 0.25), 0 3px 10px rgba(0, 113, 227, 0.15);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.cv-button:active {
+    transform: translateY(-1px) scale(1);
+    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.2);
+    transition: all 0.15s ease;
+}
+
+/* ===================================
    SECTIONS
    =================================== */
 
@@ -1915,6 +2022,39 @@ section {
     margin: 0;
 }
 
+/* Form Success Message */
+.form-success-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.form-success-message h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-primary);
+}
+
+.form-success-message p {
+    font-size: 1.0625rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
 /* Contact Map Section */
 .contact-map-section {
     max-width: 900px;
@@ -2344,6 +2484,38 @@ section {
 
     .page-header h2 {
         font-size: 2rem;
+    }
+
+    /* Werdegang Hero - Mobile */
+    .werdegang-hero {
+        padding: 3.5rem 0 3rem 0;
+    }
+
+    .werdegang-header {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .werdegang-title {
+        font-size: 2.25rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+    }
+
+    .werdegang-subtitle {
+        font-size: 1.0625rem;
+        margin-bottom: 2rem;
+    }
+
+    .cv-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+        gap: 0.5rem;
+        border-radius: 14px;
+    }
+
+    .cv-icon {
+        font-size: 1.125rem;
     }
 
     /* Sections */

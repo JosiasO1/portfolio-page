@@ -97,11 +97,19 @@
                     </div>
 
                     <div class="contact-form-container">
-                        <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form">
+                        <!-- Success Message -->
+                        <div id="form-success-message" class="form-success-message" style="display: none;">
+                            <div class="success-icon">✓</div>
+                            <h3>Nachricht gesendet!</h3>
+                            <p>Vielen Dank für deine Nachricht. Ich melde mich schnellstmöglich bei dir.</p>
+                        </div>
+
+                        <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form" id="contactForm">
                             <!-- Versteckte Formsubmit-Konfiguration -->
-                            <input type="hidden" name="_next" value="https://josiaso1.github.io/kontakt.html?success=true">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="https://josiaso1.github.io/portfolio-page/kontakt.html?success=true">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Portfolio">
 
                             <div class="form-group">
                                 <label for="name">Name *</label>
@@ -115,7 +123,7 @@
 
                             <div class="form-group">
                                 <label for="subject">Betreff</label>
-                                <input type="text" id="subject" name="_subject" placeholder="Worum geht es?">
+                                <input type="text" id="subject" name="Betreff" placeholder="Worum geht es?">
                             </div>
 
                             <div class="form-group">
@@ -123,7 +131,7 @@
                                 <textarea id="message" name="message" rows="6" placeholder="Schreibe deine Nachricht..." required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" id="submit-btn">
                                 Nachricht senden
                             </button>
 
@@ -178,6 +186,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
+    <script src="js/contact-form.js"></script>
     <script src="js/init.js"></script>
 </body>
 </html>
