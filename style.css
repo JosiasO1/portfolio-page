@@ -1757,6 +1757,54 @@ section {
     font-size: 0.9375rem;
 }
 
+/* Musik Button */
+.btn-musik {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-musik:hover {
+    background: linear-gradient(135deg, #1ed760 0%, #1DB954 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.3);
+}
+
+.btn-musik:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(29, 185, 84, 0.2);
+}
+
+/* Spotify Container */
+#spotify-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Quote Box */
 .hobbys-section .quote-box {
     max-width: 700px;
