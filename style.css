@@ -825,11 +825,48 @@ section {
    TIMELINE
    =================================== */
 
+.timeline-wrapper {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+}
+
+.timeline-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.timeline-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.timeline-wrapper::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+}
+
+.timeline-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary);
+}
+
+/* Desktop: No scroll needed */
+@media (min-width: 769px) {
+    .timeline-wrapper {
+        overflow-x: visible;
+    }
+
+    .timeline-minimal {
+        min-width: auto;
+    }
+}
+
 .timeline-minimal {
     position: relative;
     padding: 8rem 0;
     max-width: 1200px;
     margin: 0 auto;
+    min-width: 700px;
 }
 
 .timeline-line {
@@ -2388,6 +2425,17 @@ section {
         font-size: 1rem;
     }
 
+    /* Mobile: Active indicator inline rechts neben dem Text */
+    nav ul li a.active::after,
+    .nav-menu li a.active::after {
+        position: static;
+        transform: none;
+        margin-left: 0.5rem;
+        display: inline-block;
+        bottom: auto;
+        left: auto;
+    }
+
     /* Typography */
     h1 {
         font-size: 2.5rem;
@@ -2612,16 +2660,24 @@ section {
         margin: 1.5rem 0 3rem 0;
     }
 
-    .timeline-stations {
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
+    /* Timeline bleibt horizontal und scrollbar */
+    .timeline-wrapper {
+        padding: 0 1rem;
+        margin: 0 -1rem;
     }
 
-    .timeline-station {
-        flex: 1;
-        width: 100%;
-        max-width: 280px;
+    .timeline-minimal {
+        min-width: 900px;
+        padding: 6rem 0;
+    }
+
+    .timeline-stations {
+        display: flex;
+        gap: 3rem;
+    }
+
+    .station-content {
+        max-width: 160px;
     }
 
     .station-tooltip {
