@@ -2660,24 +2660,61 @@ section {
         margin: 1.5rem 0 3rem 0;
     }
 
-    /* Timeline bleibt horizontal und scrollbar */
+    /* Timeline: horizontal scrollbar auf Mobile, exakt wie Desktop */
     .timeline-wrapper {
-        padding: 0 1rem;
+        overflow-x: auto;
+        overflow-y: visible;
+        padding: 0 1rem 1.5rem 1rem;
         margin: 0 -1rem;
+        -webkit-overflow-scrolling: touch;
     }
 
     .timeline-minimal {
-        min-width: 900px;
+        min-width: 1100px;
         padding: 6rem 0;
+    }
+
+    .timeline-line {
+        left: 0;
+        right: 60px;
     }
 
     .timeline-stations {
         display: flex;
-        gap: 3rem;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    .timeline-station {
+        flex: 1;
+        min-width: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Behalte alternierende Layout bei (oben/unten) */
+    .timeline-station:nth-child(odd) {
+        padding-bottom: 6rem;
+        padding-top: 0;
+    }
+
+    .timeline-station:nth-child(even) {
+        padding-top: 6rem;
+        padding-bottom: 0;
     }
 
     .station-content {
-        max-width: 160px;
+        max-width: 140px;
+    }
+
+    .station-marker {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .station-tooltip {
