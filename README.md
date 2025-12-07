@@ -7,10 +7,10 @@ die meine Projekte, Interessen und Fähigkeiten im Bereich **Web Engineering** u
 ---
 
 ##  Projektstatus
-Aktuell im Aufbau (Version 0.1)  
-- Grundstruktur mit **HTML** und **CSS** erstellt  
-- Responsives Layout (Mobile First) in Arbeit  
-- Weitere Features wie **JavaScript-Interaktionen**, **Projektgalerie** und **Kontaktformular** sind geplant  
+Aktuell im Aufbau (Version 0.2)
+- Grundstruktur mit **HTML** und **CSS** erstellt
+- Responsives Layout (Mobile First) implementiert
+- **JavaScript-Interaktionen**, **3D Hobby-Karussell**, **Quote of the Day API** und **Kontaktformular** implementiert  
 
 ---
 
