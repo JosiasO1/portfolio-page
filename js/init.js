@@ -26,34 +26,34 @@ function initSkillFilters() {
 
 // Timeline-Interaktionen (falls Timeline vorhanden)
 function initTimelineInteractions() {
-    const stations = document.querySelectorAll('.timeline-station');
+    const items = document.querySelectorAll('.timeline-item');
     const infoBox = document.getElementById('timelineInfoBox');
     const infoTitle = document.getElementById('infoBoxTitle');
     const infoPeriod = document.getElementById('infoBoxPeriod');
     const infoCompany = document.getElementById('infoBoxCompany');
     const infoDescription = document.getElementById('infoBoxDescription');
 
-    if (!infoBox || stations.length === 0) {
+    if (!infoBox || items.length === 0) {
         console.log('ℹ️ No timeline found on this page');
         return;
     }
 
-    console.log(`✓ Timeline found with ${stations.length} stations`);
+    console.log(`✓ Timeline found with ${items.length} items`);
 
-    stations.forEach(station => {
+    items.forEach(item => {
         // Add cursor pointer style
-        station.style.cursor = 'pointer';
+        item.style.cursor = 'pointer';
 
-        station.onclick = function(e) {
+        item.onclick = function(e) {
             e.preventDefault();
 
-            // Remove active class from all stations
-            document.querySelectorAll('.timeline-station').forEach(s => {
-                s.classList.remove('station-active');
+            // Remove active class from all items
+            document.querySelectorAll('.timeline-item').forEach(i => {
+                i.classList.remove('item-active');
             });
 
-            // Add active class to clicked station
-            this.classList.add('station-active');
+            // Add active class to clicked item
+            this.classList.add('item-active');
 
             // Get data from attributes
             const title = this.dataset.title || '';
@@ -75,7 +75,7 @@ function initTimelineInteractions() {
                 infoBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 150);
 
-            console.log('✓ Timeline station clicked:', title);
+            console.log('✓ Timeline item clicked:', title);
         };
     });
 
