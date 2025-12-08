@@ -20,7 +20,8 @@
         try {
             console.log('📡 Fetching Quote of the Day...');
 
-            const response = await fetch('https://zenquotes.io/api/today');
+            // Try ZenQuotes API with CORS proxy
+            const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://zenquotes.io/api/today'));
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
