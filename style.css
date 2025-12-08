@@ -872,12 +872,11 @@ section {
 .timeline-line {
     position: absolute;
     left: 0;
-    right: 60px;
     top: 50%;
+    height: 3px;
+    width: calc(100% - 60px);
+    background: var(--color-black);
     transform: translateY(-50%);
-    height: 2px;
-    background: var(--color-border);
-    border-radius: 1px;
     z-index: 1;
 }
 
@@ -889,7 +888,7 @@ section {
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-left: 16px solid var(--color-border);
+    border-left: 16px solid var(--color-black);
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
 }
@@ -2676,7 +2675,12 @@ section {
 
     .timeline-line {
         left: 0;
-        right: 60px;
+        width: calc(100% - 60px);
+        height: 3px;
+    }
+
+    .timeline-line::after {
+        right: -20px;
     }
 
     .timeline-stations {
