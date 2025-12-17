@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="i18n-loading">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <script>
+      (function () {
+        const lang = localStorage.getItem('portfolio_language') || 'de';
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang;
+      })();
+    </script>
     <meta name="theme-color" content="#ffffff">
     <meta name="mobile-web-app-capable" content="yes">
     <title>Josias Odermatt - Portfolio</title>
@@ -42,10 +49,15 @@
                     <span></span>
                 </label>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Startseite</a></li>
-                    <li><a href="ueber-mich.html">Über mich</a></li>
-                    <li><a href="werdegang.html">Werdegang</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="index.html" class="active" data-i18n="nav_home">Startseite</a></li>
+                    <li><a href="ueber-mich.html" data-i18n="nav_about">Über mich</a></li>
+                    <li><a href="werdegang.html" data-i18n="nav_career">Werdegang</a></li>
+                    <li><a href="kontakt.html" data-i18n="nav_contact">Kontakt</a></li>
+                    <li class="lang-switch-wrapper">
+                        <span class="lang-switch">
+                            <span data-lang="de" class="active">DE</span> | <span data-lang="en">EN</span>
+                        </span>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -59,26 +71,26 @@
                     <div class="hero-text">
                         <div class="badge-pill">
                             <span class="badge-dot"></span>
-                            Verfügbar für Projekte
+                            <span data-i18n="hero_badge">Verfügbar für Projekte</span>
                         </div>
-                        <h1 class="hero-title">
+                        <h1 class="hero-title" data-i18n="hero_name">
                             Josias Odermatt
                         </h1>
-                        <p class="hero-subtitle">
+                        <p class="hero-subtitle" data-i18n="hero_title">
                             BSc in Digital Business & AI
                         </p>
-                        <p class="hero-description">
+                        <p class="hero-description" data-i18n="hero_description">
                             Ich bin leidenschaftlich daran interessiert, kreative und innovative Lösungen zu entwickeln. Auf dieser Webseite findest du einen Überblick über meine Interessen und meinen beruflichen Werdegang.
                         </p>
                         <div class="hero-cta">
                             <a href="ueber-mich.html" class="btn-futuristic btn-primary-glow">
-                                <span>Über mich</span>
+                                <span data-i18n="hero_btn_about">Über mich</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
                             </a>
                             <a href="kontakt.html" class="btn-futuristic btn-glass">
-                                <span>Kontakt aufnehmen</span>
+                                <span data-i18n="hero_btn_contact">Kontakt aufnehmen</span>
                             </a>
                         </div>
                     </div>
@@ -111,8 +123,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3>Über mich</h3>
-                        <p>Lerne mich und meine Geschichte kennen</p>
+                        <h3 data-i18n="card_about_title">Über mich</h3>
+                        <p data-i18n="card_about_desc">Lerne mich und meine Geschichte kennen</p>
                         <div class="card-arrow">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -130,8 +142,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3>Werdegang</h3>
-                        <p>Mein beruflicher und akademischer Weg</p>
+                        <h3 data-i18n="card_career_title">Werdegang</h3>
+                        <p data-i18n="card_career_desc">Mein beruflicher und akademischer Weg</p>
                         <div class="card-arrow">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -150,8 +162,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3>Kontakt</h3>
-                        <p>Lass uns in Verbindung treten</p>
+                        <h3 data-i18n="card_contact_title">Kontakt</h3>
+                        <p data-i18n="card_contact_desc">Lass uns in Verbindung treten</p>
                         <div class="card-arrow">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -168,7 +180,7 @@
                 <div class="quote-of-day-card" id="quoteOfDay">
                     <div class="quote-loading">
                         <div class="loading-spinner"></div>
-                        <p>Lade inspirierenden Spruch...</p>
+                        <p data-i18n="quote_loading">Lade inspirierenden Spruch...</p>
                     </div>
                     <div class="quote-content" style="display: none;">
                         <svg class="quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +191,7 @@
                         </svg>
                         <blockquote class="quote-text" id="quoteText"></blockquote>
                         <p class="quote-author" id="quoteAuthor"></p>
-                        <p class="quote-label">💡 Spruch des Tages</p>
+                        <p class="quote-label" data-i18n="quote_label">💡 Spruch des Tages</p>
                     </div>
                 </div>
             </div>
@@ -191,7 +203,7 @@
     <footer class="global-footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
+                <p class="footer-copyright" data-i18n="footer_copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
                 <div class="footer-social-links">
                     <a href="https://www.linkedin.com/in/josias-odermatt-1131512a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="footer-social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
                         <img src="images/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="LinkedIn" class="footer-icon">
@@ -215,6 +227,7 @@
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/quote-of-day.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/init.js"></script>
 </body>
 </html>

@@ -24,62 +24,16 @@ function initSkillFilters() {
     }
 }
 
-// Timeline-Interaktionen (falls Timeline vorhanden)
+// Timeline-Interaktionen (handled by timeline-i18n.js for proper i18n support)
 function initTimelineInteractions() {
     const items = document.querySelectorAll('.timeline-item');
-    const infoBox = document.getElementById('timelineInfoBox');
-    const infoTitle = document.getElementById('infoBoxTitle');
-    const infoPeriod = document.getElementById('infoBoxPeriod');
-    const infoCompany = document.getElementById('infoBoxCompany');
-    const infoDescription = document.getElementById('infoBoxDescription');
-
-    if (!infoBox || items.length === 0) {
-        console.log('ℹ️ No timeline found on this page');
-        return;
-    }
-
-    console.log(`✓ Timeline found with ${items.length} items`);
-
-    items.forEach(item => {
+    if (items.length > 0) {
         // Add cursor pointer style
-        item.style.cursor = 'pointer';
-
-        item.onclick = function(e) {
-            e.preventDefault();
-
-            // Remove active class from all items
-            document.querySelectorAll('.timeline-item').forEach(i => {
-                i.classList.remove('item-active');
-            });
-
-            // Add active class to clicked item
-            this.classList.add('item-active');
-
-            // Get data from attributes
-            const title = this.dataset.title || '';
-            const period = this.dataset.period || '';
-            const company = this.dataset.company || '';
-            const description = this.dataset.description || '';
-
-            // Update info box content
-            infoTitle.textContent = title;
-            infoPeriod.textContent = period;
-            infoCompany.textContent = company;
-            infoDescription.textContent = description;
-
-            // Show info box with animation
-            infoBox.classList.add('visible');
-
-            // Scroll info box into view smoothly
-            setTimeout(() => {
-                infoBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 150);
-
-            console.log('✓ Timeline item clicked:', title);
-        };
-    });
-
-    console.log('✓ Timeline click handlers attached');
+        items.forEach(item => {
+            item.style.cursor = 'pointer';
+        });
+        console.log('ℹ️ Timeline interactions delegated to timeline-i18n.js');
+    }
 }
 
 // Bei DOMContentLoaded ausführen

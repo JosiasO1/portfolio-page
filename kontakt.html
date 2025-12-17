@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="i18n-loading">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      (function () {
+        const lang = localStorage.getItem('portfolio_language') || 'de';
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang;
+      })();
+    </script>
     <title>Portfolio - Kontakt</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,10 +34,15 @@
                     <span></span>
                 </label>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="ueber-mich.html">Über mich</a></li>
-                    <li><a href="werdegang.html">Werdegang</a></li>
-                    <li><a href="kontakt.html" class="active">Kontakt</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Startseite</a></li>
+                    <li><a href="ueber-mich.html" data-i18n="nav_about">Über mich</a></li>
+                    <li><a href="werdegang.html" data-i18n="nav_career">Werdegang</a></li>
+                    <li><a href="kontakt.html" class="active" data-i18n="nav_contact">Kontakt</a></li>
+                    <li class="lang-switch-wrapper">
+                        <span class="lang-switch">
+                            <span data-lang="de" class="active">DE</span> | <span data-lang="en">EN</span>
+                        </span>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -39,8 +51,8 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h2>Kontakt</h2>
-                <p>Lass uns in Verbindung treten</p>
+                <h2 data-i18n="contact_page_title">Kontakt</h2>
+                <p data-i18n="contact_page_subtitle">Lass uns in Verbindung treten</p>
             </div>
         </section>
 
@@ -48,14 +60,14 @@
             <div class="container">
                 <div class="contact-wrapper">
                     <div class="contact-info">
-                        <h3>Schreib mir!</h3>
-                        <p>Hast du Fragen, möchtest du zusammenarbeiten oder einfach nur Hallo sagen? Ich freue mich auf deine Nachricht!</p>
+                        <h3 data-i18n="contact_intro_title">Schreib mir!</h3>
+                        <p data-i18n="contact_intro_text">Hast du Fragen, möchtest du zusammenarbeiten oder einfach nur Hallo sagen? Ich freue mich auf deine Nachricht!</p>
 
                         <div class="contact-details">
                             <div class="contact-item">
                                 <span class="contact-icon">📧</span>
                                 <div>
-                                    <h4>Email</h4>
+                                    <h4 data-i18n="contact_email_label">Email</h4>
                                     <a href="mailto:josias.odermatt@bluewin.ch">josias.odermatt@bluewin.ch</a>
                                 </div>
                             </div>
@@ -63,7 +75,7 @@
                             <div class="contact-item">
                                 <span class="contact-icon">📱</span>
                                 <div>
-                                    <h4>Telefon</h4>
+                                    <h4 data-i18n="contact_phone_label">Telefon</h4>
                                     <a href="tel:+41794890900">+41 79 489 09 00</a>
                                 </div>
                             </div>
@@ -71,14 +83,14 @@
                             <div class="contact-item">
                                 <span class="contact-icon">📍</span>
                                 <div>
-                                    <h4>Standort</h4>
-                                    <p>Freiburgstrasse</p>
+                                    <h4 data-i18n="contact_location_label">Standort</h4>
+                                    <p data-i18n="contact_location_value">Freiburgstrasse</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="social-media">
-                            <h4>Folge mir</h4>
+                            <h4 data-i18n="contact_social_title">Folge mir</h4>
                             <div class="social-icons">
                                 <a href="https://www.linkedin.com/in/josias-odermatt-1131512a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app " class="social-icon" title="LinkedIn">
                                     <img src="images/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="LinkedIn" class="contact-icon">
@@ -100,8 +112,8 @@
                         <!-- Success Message -->
                         <div id="form-success-message" class="form-success-message" style="display: none;">
                             <div class="success-icon">✓</div>
-                            <h3>Nachricht gesendet!</h3>
-                            <p>Vielen Dank für deine Nachricht. Ich melde mich schnellstmöglich bei dir.</p>
+                            <h3 data-i18n="contact_form_success_title">Nachricht gesendet!</h3>
+                            <p data-i18n="contact_form_success_text">Vielen Dank für deine Nachricht. Ich melde mich schnellstmöglich bei dir.</p>
                         </div>
 
                         <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form" id="contactForm">
@@ -112,30 +124,30 @@
                             <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Portfolio-Website">
 
                             <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                                <label for="name" data-i18n="contact_form_name_label">Name *</label>
+                                <input type="text" id="name" name="name" data-i18n="contact_form_name_placeholder" placeholder="Dein Name" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" placeholder="deine@email.com" required>
+                                <label for="email" data-i18n="contact_form_email_label">Email *</label>
+                                <input type="email" id="email" name="email" data-i18n="contact_form_email_placeholder" placeholder="deine@email.com" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="subject">Betreff</label>
-                                <input type="text" id="subject" name="Betreff" placeholder="Worum geht es?">
+                                <label for="subject" data-i18n="contact_form_subject_label">Betreff</label>
+                                <input type="text" id="subject" name="Betreff" data-i18n="contact_form_subject_placeholder" placeholder="Worum geht es?">
                             </div>
 
                             <div class="form-group">
-                                <label for="message">Nachricht *</label>
-                                <textarea id="message" name="message" rows="6" placeholder="Schreibe deine Nachricht..." required></textarea>
+                                <label for="message" data-i18n="contact_form_message_label">Nachricht *</label>
+                                <textarea id="message" name="message" rows="6" data-i18n="contact_form_message_placeholder" placeholder="Schreibe deine Nachricht..." required></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary" id="submit-btn">
-                                Nachricht senden
+                                <span data-i18n="contact_form_submit">Nachricht senden</span>
                             </button>
 
-                            <p class="form-note">* Pflichtfelder</p>
+                            <p class="form-note" data-i18n="contact_form_required">* Pflichtfelder</p>
                         </form>
                     </div>
                 </div>
@@ -144,8 +156,8 @@
 
         <section id="map-section" class="contact-map-section">
             <div class="container">
-                <h2>Standort</h2>
-                <p>Hier kannst du sehen, wo ich mich befinde.</p>
+                <h2 data-i18n="contact_map_title">Standort</h2>
+                <p data-i18n="contact_map_subtitle">Hier kannst du sehen, wo ich mich befinde.</p>
 
                 <div class="map-card">
                     <iframe
@@ -163,7 +175,7 @@
     <footer class="global-footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
+                <p class="footer-copyright" data-i18n="footer_copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
                 <div class="footer-social-links">
                     <a href="https://www.linkedin.com/in/josias-odermatt-1131512a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="footer-social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
                         <img src="images/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="LinkedIn" class="footer-icon">
@@ -187,6 +199,7 @@
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/contact-form.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/init.js"></script>
 </body>
 </html>

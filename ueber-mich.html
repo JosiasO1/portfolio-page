@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="i18n-loading">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <script>
+      (function () {
+        const lang = localStorage.getItem('portfolio_language') || 'de';
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang;
+      })();
+    </script>
     <meta name="theme-color" content="#ffffff">
     <meta name="mobile-web-app-capable" content="yes">
     <title>Portfolio - Über mich</title>
@@ -29,10 +36,15 @@
                     <span></span>
                 </label>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Startseite</a></li>
-                    <li><a href="ueber-mich.html" class="active">Über mich</a></li>
-                    <li><a href="werdegang.html">Werdegang</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Startseite</a></li>
+                    <li><a href="ueber-mich.html" class="active" data-i18n="nav_about">Über mich</a></li>
+                    <li><a href="werdegang.html" data-i18n="nav_career">Werdegang</a></li>
+                    <li><a href="kontakt.html" data-i18n="nav_contact">Kontakt</a></li>
+                    <li class="lang-switch-wrapper">
+                        <span class="lang-switch">
+                            <span data-lang="de" class="active">DE</span> | <span data-lang="en">EN</span>
+                        </span>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -41,8 +53,8 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h2>Über mich</h2>
-                <p>Lerne mich und meine Geschichte kennen</p>
+                <h2 data-i18n="about_page_title">Über mich</h2>
+                <p data-i18n="about_page_subtitle">Lerne mich und meine Geschichte kennen</p>
             </div>
         </section>
 
@@ -53,9 +65,9 @@
                         <img src="images/ME1.jpg" alt="Profilbild von Josias Odermatt">
                     </div>
                     <div class="profile-text">
-                        <h3>Hallo, ich bin Josias Odermatt</h3>
-                        <p>Ich studiere Digital Business & AI Vollzeit an der Berner Fachhochschule. Mich motiviert es, Technologie zu verstehen und praktisch einzusetzen, um echte Probleme zu lösen.</p>
-                        <p>Meine Leidenschaft liegt in der Entwicklung digitaler Produkte, die Design und Funktionalität kombinieren. Ich arbeite gerne mit neuen Tools und Technologien und setze Ideen schnell in prototypische Lösungen um. Mein Antrieb ist es, reale Herausforderungen effizient zu lösen und Innovation voranzutreiben.</p>
+                        <h3 data-i18n="about_intro_title">Hallo, ich bin Josias Odermatt</h3>
+                        <p data-i18n="about_intro_p1">Ich studiere Digital Business & AI Vollzeit an der Berner Fachhochschule. Mich motiviert es, Technologie zu verstehen und praktisch einzusetzen, um echte Probleme zu lösen.</p>
+                        <p data-i18n="about_intro_p2">Meine Leidenschaft liegt in der Entwicklung digitaler Produkte, die Design und Funktionalität kombinieren. Ich arbeite gerne mit neuen Tools und Technologien und setze Ideen schnell in prototypische Lösungen um. Mein Antrieb ist es, reale Herausforderungen effizient zu lösen und Innovation voranzutreiben.</p>
                     </div>
                 </div>
             </div>
@@ -63,14 +75,14 @@
 
         <section class="skills-section">
             <div class="container">
-                <h3>Meine Fähigkeiten</h3>
+                <h3 data-i18n="about_skills_title">Meine Fähigkeiten</h3>
 
                 <!-- Filter Buttons -->
                 <div class="skill-filters">
-                    <button class="skill-filter-btn active" data-filter="all">Alle</button>
-                    <button class="skill-filter-btn" data-filter="tech">Tech</button>
-                    <button class="skill-filter-btn" data-filter="design">Design</button>
-                    <button class="skill-filter-btn" data-filter="soft">Soft Skills</button>
+                    <button class="skill-filter-btn active" data-filter="all" data-i18n="about_filter_all">Alle</button>
+                    <button class="skill-filter-btn" data-filter="tech" data-i18n="about_filter_tech">Tech</button>
+                    <button class="skill-filter-btn" data-filter="design" data-i18n="about_filter_design">Design</button>
+                    <button class="skill-filter-btn" data-filter="soft" data-i18n="about_filter_soft">Soft Skills</button>
                 </div>
 
                 <!-- Skills Grid (alle Skills in einem Grid, ohne Kategorien) -->
@@ -130,23 +142,23 @@
                     <!-- Soft Skills / Kompetenzen - füge neue Soft-Skills hier hinzu mit data-category="soft" -->
                     <span class="skill-badge" data-category="soft" data-icon="🧠">
                         <span class="skill-icon">🧠</span>
-                        <span class="skill-name">Analytisches Denken</span>
+                        <span class="skill-name" data-i18n="skill_analytical">Analytisches Denken</span>
                     </span>
                     <span class="skill-badge" data-category="soft" data-icon="🔧">
                         <span class="skill-icon">🔧</span>
-                        <span class="skill-name">Problemlösung</span>
+                        <span class="skill-name" data-i18n="skill_problem_solving">Problemlösung</span>
                     </span>
                     <span class="skill-badge" data-category="soft" data-icon="🤝">
                         <span class="skill-icon">🤝</span>
-                        <span class="skill-name">Teamarbeit</span>
+                        <span class="skill-name" data-i18n="skill_teamwork">Teamarbeit</span>
                     </span>
                     <span class="skill-badge" data-category="soft" data-icon="🚀">
                         <span class="skill-icon">🚀</span>
-                        <span class="skill-name">Selbstständigkeit</span>
+                        <span class="skill-name" data-i18n="skill_autonomy">Selbstständigkeit</span>
                     </span>
                     <span class="skill-badge" data-category="soft" data-icon="📚">
                         <span class="skill-icon">📚</span>
-                        <span class="skill-name">Lernbereitschaft</span>
+                        <span class="skill-name" data-i18n="skill_learning">Lernbereitschaft</span>
                     </span>
                 </div>
             </div>
@@ -155,11 +167,11 @@
         <!-- Meine Hobbys Abschnitt -->
         <section class="hobbys-section">
             <div class="container">
-                <h3>Meine Hobbys</h3>
-                <p class="section-intro">Was mich in meiner Freizeit begeistert</p>
+                <h3 data-i18n="about_hobbies_title">Meine Hobbys</h3>
+                <p class="section-intro" data-i18n="about_hobbies_intro">Was mich in meiner Freizeit begeistert</p>
 
                 <div class="hobby-carousel-wrapper">
-                    <button class="carousel-nav carousel-nav-prev" aria-label="Vorheriges Hobby">
+                    <button class="carousel-nav carousel-nav-prev" aria-label="Previous Hobby">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
@@ -170,7 +182,7 @@
                             <div class="hobby-carousel-slide" data-hobby="football">
                                 <div class="hobby-card hobby-card-football">
                                     <div class="hobby-content">
-                                        <h4>Fussball</h4>
+                                        <h4 data-i18n="hobby_football">Fussball</h4>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +190,7 @@
                             <div class="hobby-carousel-slide" data-hobby="tennis">
                                 <div class="hobby-card hobby-card-tennis">
                                     <div class="hobby-content">
-                                        <h4>Tennis</h4>
+                                        <h4 data-i18n="hobby_tennis">Tennis</h4>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +198,7 @@
                             <div class="hobby-carousel-slide" data-hobby="volleyball">
                                 <div class="hobby-card hobby-card-volleyball">
                                     <div class="hobby-content">
-                                        <h4>Volleyball</h4>
+                                        <h4 data-i18n="hobby_volleyball">Volleyball</h4>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +206,7 @@
                             <div class="hobby-carousel-slide" data-hobby="surf">
                                 <div class="hobby-card hobby-card-surf">
                                     <div class="hobby-content">
-                                        <h4>Surfen</h4>
+                                        <h4 data-i18n="hobby_surf">Surfen</h4>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +214,7 @@
                             <div class="hobby-carousel-slide" data-hobby="fitness">
                                 <div class="hobby-card hobby-card-fitness">
                                     <div class="hobby-content">
-                                        <h4>Fitness</h4>
+                                        <h4 data-i18n="hobby_fitness">Fitness</h4>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +222,7 @@
                             <div class="hobby-carousel-slide" data-hobby="drawing">
                                 <div class="hobby-card hobby-card-drawing">
                                     <div class="hobby-content">
-                                        <h4>Zeichnen</h4>
+                                        <h4 data-i18n="hobby_drawing">Zeichnen</h4>
                                     </div>
                                 </div>
                             </div>
@@ -218,14 +230,14 @@
                             <div class="hobby-carousel-slide" data-hobby="cooking">
                                 <div class="hobby-card hobby-card-cooking">
                                     <div class="hobby-content">
-                                        <h4>Kochen</h4>
+                                        <h4 data-i18n="hobby_cooking">Kochen</h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <button class="carousel-nav carousel-nav-next" aria-label="Nächstes Hobby">
+                    <button class="carousel-nav carousel-nav-next" aria-label="Next Hobby">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
@@ -235,30 +247,30 @@
                 <div class="carousel-dots"></div>
 
                 <div class="interests-content">
-                    <h4 class="interests-title">Weitere Interessen</h4>
+                    <h4 class="interests-title" data-i18n="about_interests_title">Weitere Interessen</h4>
                     <div class="interests-list">
                         <div class="interest-item">
                             <span class="interest-emoji">🎵</span>
                             <div>
-                                <h5>Musik hören</h5>
-                                <p>Musik begleitet mich durch den Alltag. Sie inspiriert mich und hilft mir zu entspannen.</p>
-                                <button id="musik-button" class="btn-musik">🎧 Meine Playlist anhören</button>
+                                <h5 data-i18n="interest_music_title">Musik hören</h5>
+                                <p data-i18n="interest_music_desc">Musik begleitet mich durch den Alltag. Sie inspiriert mich und hilft mir zu entspannen.</p>
+                                <button id="musik-button" class="btn-musik" data-i18n="interest_music_btn">🎧 Meine Playlist anhören</button>
                             </div>
                         </div>
 
                         <div class="interest-item">
                             <span class="interest-emoji">💻</span>
                             <div>
-                                <h5>Technologie & Innovation</h5>
-                                <p>Ich interessiere mich für digitale Trends und teste gern neue Tools, die den Alltag smarter machen.</p>
+                                <h5 data-i18n="interest_tech_title">Technologie & Innovation</h5>
+                                <p data-i18n="interest_tech_desc">Ich interessiere mich für digitale Trends und teste gern neue Tools, die den Alltag smarter machen.</p>
                             </div>
                         </div>
 
                         <div class="interest-item">
                             <span class="interest-emoji">📚</span>
                             <div>
-                                <h5>Persönliche Weiterentwicklung</h5>
-                                <p>Produktivität und persönliches Wachstum treiben mich an.</p>
+                                <h5 data-i18n="interest_growth_title">Persönliche Weiterentwicklung</h5>
+                                <p data-i18n="interest_growth_desc">Produktivität und persönliches Wachstum treiben mich an.</p>
                             </div>
                         </div>
                     </div>
@@ -273,7 +285,7 @@
     <footer class="global-footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
+                <p class="footer-copyright" data-i18n="footer_copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
                 <div class="footer-social-links">
                     <a href="https://www.linkedin.com/in/josias-odermatt-1131512a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="footer-social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
                         <img src="images/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="LinkedIn" class="footer-icon">
@@ -298,6 +310,7 @@
     <script src="js/weather.js"></script>
     <script src="js/hobby-carousel.js"></script>
     <script src="js/spotify-player.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/init.js"></script>
 </body>
 </html>
