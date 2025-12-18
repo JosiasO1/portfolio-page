@@ -15,6 +15,10 @@
     <title>Portfolio - Über mich</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Chart.js for Skills Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
     <script src="js/animations.js"></script>
 </head>
 <body class="page-loading">
@@ -160,6 +164,20 @@
                         <span class="skill-icon">📚</span>
                         <span class="skill-name" data-i18n="skill_learning">Lernbereitschaft</span>
                     </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Visualization Chart Section -->
+        <section class="skills-chart-section">
+            <div class="container">
+                <h3 data-i18n="chart_skills_title">Meine technischen Kompetenzen</h3>
+                <p class="section-intro" data-i18n="chart_skills_intro">Visualisierung meiner Hauptfähigkeiten</p>
+
+                <div class="chart-wrapper">
+                    <div class="chart-container">
+                        <canvas id="skillsRadarChart"></canvas>
+                    </div>
                 </div>
             </div>
         </section>
@@ -310,6 +328,7 @@
     <script src="js/weather.js"></script>
     <script src="js/hobby-carousel.js"></script>
     <script src="js/spotify-player.js"></script>
+    <script src="js/skills-chart.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/init.js"></script>
 </body>
