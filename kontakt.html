@@ -118,12 +118,15 @@
                             No JavaScript required - pure HTML form submission
                             Redirects to thank-you.html after successful submission
                         -->
-                        <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form">
+                        <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form" id="contactForm">
                             <!-- FormSubmit Configuration (hidden inputs) -->
-                            <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://josiaso1.github.io/portfolio-page/thank-you.html">
+                            <input type="hidden" name="_subject" value="Portfolio Kontaktformular">
+                            <input type="hidden" name="_captcha" value="false">
                             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                            <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Portfolio-Website">
+
+                            <!-- Template field for FormSubmit to parse the redirect -->
+                            <input type="hidden" name="_template" value="box">
 
                             <!-- Name Field (Required) -->
                             <div class="form-group">
@@ -232,7 +235,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
-    <!-- No contact-form.js needed - Form uses pure HTML FormSubmit -->
+    <script src="js/contact-form.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/init.js"></script>
 </body>
