@@ -1841,14 +1841,26 @@ section {
     box-shadow: 0 3px 8px rgba(29, 185, 84, 0.2);
 }
 
-/* Spotify Container */
+/* Spotify Container - Playlist embed with 5-6 visible tracks */
 #spotify-container {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.4s ease-out;
+    max-width: 100%;
+    margin-top: 1.5rem;
 }
 
+/* Spotify playlist iframe - responsive sizing */
+.spotify-playlist-embed {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    /* Desktop: 520px shows ~5-6 tracks */
+    height: 520px;
+}
+
+/* Smooth fade-in animation when player appears */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -3411,3 +3423,41 @@ select:focus {
     }
 }
 
+/* ===================================
+   SPOTIFY PLAYER RESPONSIVE
+   =================================== */
+
+/* Tablet: 768px - 1024px (shows 5-6 tracks) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .spotify-playlist-embed {
+        height: 480px; /* Slightly smaller for tablet */
+    }
+}
+
+/* Mobile: 480px - 768px (shows 4-5 tracks, still list view) */
+@media (max-width: 768px) {
+    #spotify-container {
+        margin-top: 1rem;
+    }
+
+    .spotify-playlist-embed {
+        height: 420px; /* Smaller but still shows multiple tracks */
+        border-radius: 8px;
+    }
+
+    /* Music button - ensure it's touch-friendly */
+    #musik-button,
+    .btn-musik {
+        min-height: 44px;
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile: < 480px (shows 3-4 tracks minimum) */
+@media (max-width: 480px) {
+    .spotify-playlist-embed {
+        height: 380px; /* Minimum height to avoid tiny player */
+    }
+}
