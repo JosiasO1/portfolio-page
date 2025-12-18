@@ -114,5 +114,12 @@
   "timeline_station5_desc": "Ich studiere seit September 2024 Vollzeit Digital Business & AI an der BFH und vertiefe mich in Themen wie Digitalisierung, Geschäftsmodelle und künstliche Intelligenz.",
 
   "chart_skills_title": "Meine technischen Kompetenzen",
-  "chart_skills_intro": "Visualisierung meiner Hauptfähigkeiten"
+  "chart_skills_intro": "Visualisierung meiner Hauptfähigkeiten",
+
+  "thankyou_title": "Danke!",
+  "thankyou_text": "Deine Nachricht wurde gesendet.",
+  "thankyou_microtext": "Ich melde mich in 24–48h.",
+  "thankyou_btn_back": "Zurück zur Kontaktseite",
+  "thankyou_btn_home": "Zur Startseite",
+  "thankyou_alt_label": "Oder direkt per E-Mail:"
 }

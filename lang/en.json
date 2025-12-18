@@ -114,5 +114,12 @@
   "timeline_station5_desc": "Since September 2024, I have been studying Digital Business & AI full-time at BFH, deepening my knowledge in topics such as digitalization, business models, and artificial intelligence.",
 
   "chart_skills_title": "My Technical Skills",
-  "chart_skills_intro": "Visualization of my core competencies"
+  "chart_skills_intro": "Visualization of my core competencies",
+
+  "thankyou_title": "Thank you!",
+  "thankyou_text": "Your message has been sent.",
+  "thankyou_microtext": "I'll get back to you in 24–48h.",
+  "thankyou_btn_back": "Back to Contact",
+  "thankyou_btn_home": "Go to Home",
+  "thankyou_alt_label": "Or directly via email:"
 }

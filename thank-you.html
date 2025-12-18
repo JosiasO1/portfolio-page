@@ -54,67 +54,41 @@
     </header>
 
     <main>
-        <!-- Thank You Hero Section -->
-        <section class="page-header">
+        <!-- Thank You Content Section - Centered Minimal Card -->
+        <section class="thank-you-section">
             <div class="container">
-                <h2 data-i18n="thankyou_page_title">Vielen Dank!</h2>
-                <p data-i18n="thankyou_page_subtitle">Deine Nachricht wurde erfolgreich gesendet</p>
-            </div>
-        </section>
-
-        <!-- Thank You Content Section -->
-        <section class="content-section">
-            <div class="container">
-                <div class="thank-you-wrapper">
-                    <!-- Success Message Card -->
-                    <div class="thank-you-content">
-                        <!-- Large Success Icon -->
-                        <div class="success-icon-large">✓</div>
-
-                        <!-- Success Title -->
-                        <h3 data-i18n="thankyou_message_title">Nachricht erfolgreich versendet!</h3>
-
-                        <!-- Success Message -->
-                        <p class="thank-you-message" data-i18n="thankyou_message_text">
-                            Vielen Dank für deine Nachricht! Ich habe sie erhalten und werde mich schnellstmöglich bei dir melden.
-                        </p>
-
-                        <!-- Sub-message -->
-                        <p class="thank-you-submessage" data-i18n="thankyou_submessage">
-                            In der Regel antworte ich innerhalb von 24-48 Stunden.
-                        </p>
-
-                        <!-- Action Buttons -->
-                        <div class="thank-you-actions">
-                            <a href="kontakt.html" class="btn btn-primary" data-i18n="thankyou_btn_back">
-                                Zurück zur Kontaktseite
-                            </a>
-                            <a href="index.html" class="btn btn-secondary" data-i18n="thankyou_btn_home">
-                                Zur Startseite
-                            </a>
-                        </div>
-
-                        <!-- Alternative Contact Methods -->
-                        <div class="thank-you-info">
-                            <h4 data-i18n="thankyou_alternative_title">Alternative Kontaktmöglichkeiten</h4>
-                            <div class="contact-methods">
-                                <div class="contact-method-item">
-                                    <span class="contact-method-icon">📧</span>
-                                    <div>
-                                        <strong data-i18n="contact_email_label">Email</strong>
-                                        <a href="mailto:josias.odermatt@bluewin.ch">josias.odermatt@bluewin.ch</a>
-                                    </div>
-                                </div>
-                                <div class="contact-method-item">
-                                    <span class="contact-method-icon">📱</span>
-                                    <div>
-                                        <strong data-i18n="contact_phone_label">Telefon</strong>
-                                        <a href="tel:+41794890900">+41 79 489 09 00</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="thank-you-card">
+                    <!-- Success Icon - Checkmark in Circle -->
+                    <div class="success-icon-circle">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M20 30.5L14 24.5L16.5 22L20 25.5L31.5 14L34 16.5L20 30.5Z" fill="currentColor"/>
+                        </svg>
                     </div>
+
+                    <!-- Headline -->
+                    <h1 class="thank-you-title" data-i18n="thankyou_title">Danke!</h1>
+
+                    <!-- Short Message -->
+                    <p class="thank-you-text" data-i18n="thankyou_text">Deine Nachricht wurde gesendet.</p>
+
+                    <!-- Micro Text - Response Time -->
+                    <p class="thank-you-microtext" data-i18n="thankyou_microtext">Ich melde mich in 24–48h.</p>
+
+                    <!-- Action Buttons - Primary and Secondary -->
+                    <div class="thank-you-buttons">
+                        <a href="kontakt.html" class="btn btn-primary" data-i18n="thankyou_btn_back">
+                            Zurück zur Kontaktseite
+                        </a>
+                        <a href="index.html" class="btn btn-secondary" data-i18n="thankyou_btn_home">
+                            Zur Startseite
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Minimal Alternative Contact - Email Only -->
+                <div class="thank-you-alt-contact">
+                    <p class="alt-contact-label" data-i18n="thankyou_alt_label">Oder direkt per E-Mail:</p>
+                    <a href="mailto:josias.odermatt@bluewin.ch" class="alt-contact-email">josias.odermatt@bluewin.ch</a>
                 </div>
             </div>
         </section>
