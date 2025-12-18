@@ -54,9 +54,11 @@
                     <li><a href="werdegang.html" data-i18n="nav_career">Werdegang</a></li>
                     <li><a href="kontakt.html" data-i18n="nav_contact">Kontakt</a></li>
                     <li class="lang-switch-wrapper">
-                        <span class="lang-switch">
-                            <span data-lang="de" class="active">DE</span> | <span data-lang="en">EN</span>
-                        </span>
+                        <div class="lang-switch" role="group" aria-label="Language selection">
+                            <button type="button" class="lang-btn active" data-lang="de" aria-label="Switch to German" aria-pressed="true">DE</button>
+                            <span class="lang-separator" aria-hidden="true">|</span>
+                            <button type="button" class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
+                        </div>
                     </li>
                 </ul>
             </nav>

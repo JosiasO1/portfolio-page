@@ -94,14 +94,17 @@
 
     /**
      * Update active language indicator in UI
+     * Updates both visual state (active class) and ARIA attributes for accessibility
      */
     function updateLanguageUI(lang) {
-        document.querySelectorAll('.lang-switch span').forEach(span => {
-            const spanLang = span.getAttribute('data-lang');
-            if (spanLang === lang) {
-                span.classList.add('active');
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            const buttonLang = button.getAttribute('data-lang');
+            if (buttonLang === lang) {
+                button.classList.add('active');
+                button.setAttribute('aria-pressed', 'true');
             } else {
-                span.classList.remove('active');
+                button.classList.remove('active');
+                button.setAttribute('aria-pressed', 'false');
             }
         });
     }
@@ -169,11 +172,22 @@
         const savedLang = getSavedLanguage();
         await setLanguage(savedLang);
 
-        // Attach click handlers to language switcher
-        document.querySelectorAll('.lang-switch span').forEach(span => {
-            span.addEventListener('click', function() {
+        // Attach click and keyboard handlers to language switcher buttons
+        // Supports both mouse clicks and keyboard interaction (Enter/Space)
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            // Click handler (works for mouse and keyboard activation)
+            button.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
                 setLanguage(lang);
+            });
+
+            // Additional keyboard handler for explicit Enter/Space support
+            button.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault(); // Prevent space from scrolling page
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
+                }
             });
         });
 
