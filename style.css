@@ -3461,3 +3461,205 @@ select:focus {
         height: 380px; /* Minimum height to avoid tiny player */
     }
 }
+
+/* ===================================
+   THANK YOU PAGE - Minimal styles
+   Reuses existing .form-success-message and .success-icon classes
+   =================================== */
+
+.thank-you-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.thank-you-content {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Large success icon for thank you page */
+.success-icon-large {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 3.5rem;
+    color: #ffffff;
+    animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.thank-you-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 1.5rem;
+}
+
+.thank-you-message {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #6e6e73;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.thank-you-submessage {
+    font-size: 1rem;
+    color: #86868b;
+    margin-bottom: 2.5rem;
+}
+
+.thank-you-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.btn-secondary {
+    background: #f5f5f7;
+    color: #1d1d1f;
+    border: 2px solid #d2d2d7;
+}
+
+.btn-secondary:hover {
+    background: #e8e8ed;
+    border-color: #b8b8bd;
+    transform: translateY(-2px);
+}
+
+.thank-you-info {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #d2d2d7;
+}
+
+.thank-you-info h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 1.5rem;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.contact-method-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f5f7;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-method-item:hover {
+    background: #e8e8ed;
+    transform: translateY(-2px);
+}
+
+.contact-method-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.contact-method-item strong {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.25rem;
+}
+
+.contact-method-item a {
+    color: #007aff;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+}
+
+.contact-method-item a:hover {
+    color: #0051d5;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for Thank You page */
+@media (max-width: 768px) {
+    .thank-you-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .success-icon-large {
+        width: 80px;
+        height: 80px;
+        font-size: 2.8rem;
+    }
+
+    .thank-you-content h3 {
+        font-size: 1.75rem;
+    }
+
+    .thank-you-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .thank-you-actions .btn {
+        width: 100%;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .thank-you-wrapper {
+        padding: 1rem 0;
+    }
+
+    .thank-you-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .success-icon-large {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+    }
+
+    .thank-you-content h3 {
+        font-size: 1.5rem;
+    }
+}

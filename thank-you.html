@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de" class="i18n-loading">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Inline script for language detection (prevents FOUC) -->
+    <script>
+      (function () {
+        const lang = localStorage.getItem('portfolio_language') || 'de';
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang;
+      })();
+    </script>
+    <title>Portfolio - Nachricht gesendet</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="js/animations.js"></script>
+</head>
+<body class="page-loading">
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <h1>JO</h1>
+            </a>
+            <div class="weather-widget" id="weatherWidget">
+                <div class="weather-loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul class="nav-menu">
+                    <li><a href="index.html" data-i18n="nav_home">Startseite</a></li>
+                    <li><a href="ueber-mich.html" data-i18n="nav_about">Über mich</a></li>
+                    <li><a href="werdegang.html" data-i18n="nav_career">Werdegang</a></li>
+                    <li><a href="kontakt.html" data-i18n="nav_contact">Kontakt</a></li>
+                    <li class="lang-switch-wrapper">
+                        <div class="lang-switch" role="group" aria-label="Language selection">
+                            <button type="button" class="lang-btn active" data-lang="de" aria-label="Switch to German" aria-pressed="true">DE</button>
+                            <span class="lang-separator" aria-hidden="true">|</span>
+                            <button type="button" class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="false">EN</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Thank You Hero Section -->
+        <section class="page-header">
+            <div class="container">
+                <h2 data-i18n="thankyou_page_title">Vielen Dank!</h2>
+                <p data-i18n="thankyou_page_subtitle">Deine Nachricht wurde erfolgreich gesendet</p>
+            </div>
+        </section>
+
+        <!-- Thank You Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="thank-you-wrapper">
+                    <!-- Success Message Card -->
+                    <div class="thank-you-content">
+                        <!-- Large Success Icon -->
+                        <div class="success-icon-large">✓</div>
+
+                        <!-- Success Title -->
+                        <h3 data-i18n="thankyou_message_title">Nachricht erfolgreich versendet!</h3>
+
+                        <!-- Success Message -->
+                        <p class="thank-you-message" data-i18n="thankyou_message_text">
+                            Vielen Dank für deine Nachricht! Ich habe sie erhalten und werde mich schnellstmöglich bei dir melden.
+                        </p>
+
+                        <!-- Sub-message -->
+                        <p class="thank-you-submessage" data-i18n="thankyou_submessage">
+                            In der Regel antworte ich innerhalb von 24-48 Stunden.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="thank-you-actions">
+                            <a href="kontakt.html" class="btn btn-primary" data-i18n="thankyou_btn_back">
+                                Zurück zur Kontaktseite
+                            </a>
+                            <a href="index.html" class="btn btn-secondary" data-i18n="thankyou_btn_home">
+                                Zur Startseite
+                            </a>
+                        </div>
+
+                        <!-- Alternative Contact Methods -->
+                        <div class="thank-you-info">
+                            <h4 data-i18n="thankyou_alternative_title">Alternative Kontaktmöglichkeiten</h4>
+                            <div class="contact-methods">
+                                <div class="contact-method-item">
+                                    <span class="contact-method-icon">📧</span>
+                                    <div>
+                                        <strong data-i18n="contact_email_label">Email</strong>
+                                        <a href="mailto:josias.odermatt@bluewin.ch">josias.odermatt@bluewin.ch</a>
+                                    </div>
+                                </div>
+                                <div class="contact-method-item">
+                                    <span class="contact-method-icon">📱</span>
+                                    <div>
+                                        <strong data-i18n="contact_phone_label">Telefon</strong>
+                                        <a href="tel:+41794890900">+41 79 489 09 00</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="global-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-copyright" data-i18n="footer_copyright">&copy; 2025 Josias Odermatt. Alle Rechte vorbehalten.</p>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/in/josias-odermatt-1131512a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="footer-social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="images/linkedin-logo-linkedin-icon-transparent-free-png.webp" alt="LinkedIn" class="footer-icon">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/JosiasO1" class="footer-social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
+                        <img src="images/github_PNG40.png" alt="GitHub" class="footer-icon">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/josias.odermatt" class="footer-social-link" title="Instagram" target="_blank" rel="noopener noreferrer">
+                        <img src="images/Instagram-Logo.png" alt="Instagram" class="footer-icon">
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript Modules -->
+    <script src="js/navigation.js"></script>
+    <script src="js/skills.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/init.js"></script>
+</body>
+</html>

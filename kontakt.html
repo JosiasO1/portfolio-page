@@ -113,44 +113,74 @@
                     </div>
 
                     <div class="contact-form-container">
-                        <!-- Success Message -->
-                        <div id="form-success-message" class="form-success-message" style="display: none;">
-                            <div class="success-icon">✓</div>
-                            <h3 data-i18n="contact_form_success_title">Nachricht gesendet!</h3>
-                            <p data-i18n="contact_form_success_text">Vielen Dank für deine Nachricht. Ich melde mich schnellstmöglich bei dir.</p>
-                        </div>
-
-                        <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form" id="contactForm">
-                            <!-- Versteckte Formsubmit-Konfiguration -->
+                        <!--
+                            Clean FormSubmit Contact Form - Rebuilt from scratch
+                            No JavaScript required - pure HTML form submission
+                            Redirects to thank-you.html after successful submission
+                        -->
+                        <form action="https://formsubmit.co/josias.odermatt@bluewin.ch" method="POST" class="contact-form">
+                            <!-- FormSubmit Configuration (hidden inputs) -->
                             <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://josiaso1.github.io/portfolio-page/kontakt.html?success=true">
-                            <input type="text" name="_honey" style="display:none">
+                            <input type="hidden" name="_next" value="https://josiaso1.github.io/portfolio-page/thank-you.html">
+                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                             <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Portfolio-Website">
 
+                            <!-- Name Field (Required) -->
                             <div class="form-group">
                                 <label for="name" data-i18n="contact_form_name_label">Name *</label>
-                                <input type="text" id="name" name="name" data-i18n="contact_form_name_placeholder" placeholder="Dein Name" required>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    data-i18n="contact_form_name_placeholder"
+                                    placeholder="Dein Name"
+                                    required
+                                    aria-required="true">
                             </div>
 
+                            <!-- Email Field (Required) -->
                             <div class="form-group">
                                 <label for="email" data-i18n="contact_form_email_label">Email *</label>
-                                <input type="email" id="email" name="email" data-i18n="contact_form_email_placeholder" placeholder="deine@email.com" required>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    data-i18n="contact_form_email_placeholder"
+                                    placeholder="deine@email.com"
+                                    required
+                                    aria-required="true">
                             </div>
 
+                            <!-- Subject Field (Optional) -->
                             <div class="form-group">
                                 <label for="subject" data-i18n="contact_form_subject_label">Betreff</label>
-                                <input type="text" id="subject" name="Betreff" data-i18n="contact_form_subject_placeholder" placeholder="Worum geht es?">
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="subject"
+                                    data-i18n="contact_form_subject_placeholder"
+                                    placeholder="Worum geht es?">
                             </div>
 
+                            <!-- Message Field (Required) -->
                             <div class="form-group">
                                 <label for="message" data-i18n="contact_form_message_label">Nachricht *</label>
-                                <textarea id="message" name="message" rows="6" data-i18n="contact_form_message_placeholder" placeholder="Schreibe deine Nachricht..." required></textarea>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    data-i18n="contact_form_message_placeholder"
+                                    placeholder="Schreibe deine Nachricht..."
+                                    required
+                                    aria-required="true"></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">
                                 <span data-i18n="contact_form_submit">Nachricht senden</span>
                             </button>
 
+                            <!-- Required Fields Note -->
                             <p class="form-note" data-i18n="contact_form_required">* Pflichtfelder</p>
                         </form>
                     </div>
@@ -202,7 +232,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/skills.js"></script>
     <script src="js/weather.js"></script>
-    <script src="js/contact-form.js"></script>
+    <!-- No contact-form.js needed - Form uses pure HTML FormSubmit -->
     <script src="js/i18n.js"></script>
     <script src="js/init.js"></script>
 </body>
